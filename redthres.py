@@ -1,10 +1,10 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("headPose.jpg")
+img = cv2.imread("headPosee.jpg")
 
 print(img.shape)
-points=[(534,432)]
+points=[(690,495)]
 
 for point in points:
     cv2.circle(img,point,1,(255,0,0),2)
