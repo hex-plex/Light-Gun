@@ -12,10 +12,11 @@ class MainCore():
     actionJob=[]
     count=0
     flag=0
-    def __init__(self,cap,actionServer):
-        self.feedline = cap
+    def __init__(self,captureModule=None,actionServer=None):
+        self.feedline = captureModule
         self.inittime = time.time()
         self.acServer = actionServer
+        self.acServer()
         
     def __repr__(self):
         return "<< Maincore: Processes "+str(self.count)+" >>"
