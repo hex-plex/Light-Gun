@@ -9,5 +9,7 @@
   <li> The display Tracking based on ir led is noisy or cant be trusted as a display of full of colors exits next to it a more robust solution is to be found</li>
   <li> Either 4 stickers on each corner can be struck and initial calibration can be done to map then on to the display or the screen</li>
   <li> The best solution is to create some software to make some kind of points on to the screen all along the run </li>
+  <li> Basic structure completed with multithreading to split the work and decrease latency</li>
+  <li> Trying to port this on python for prototyping it well on raspberry pi and then start working on mobile as its not very hand on mobile but a good encloser and trigger should work well with the android app</li>
 </ul>
   
