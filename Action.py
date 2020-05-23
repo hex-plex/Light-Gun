@@ -16,6 +16,7 @@ class ActionServer():
                 key_=msvcrt.getch()
                 if true:
                     self.buffer.append(time.time())
+    ## This cannot be used as it cant get background key inputs
     ## This would act like a asynchronous server as it has to be
     def actionInput(self):
         if len(self.buffer)==0:
