@@ -27,3 +27,5 @@ def absoluteCoordinate(size,image_points):
     return Xr,Yr
     
             
+if __name__=="__main__":
+    exit()

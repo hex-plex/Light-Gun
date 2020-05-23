@@ -7,3 +7,7 @@ def Threshold(img):
 
     #default
     return np.array([[0,0]])
+
+
+if __name__=="__main__":
+    exit()
