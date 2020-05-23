@@ -5,6 +5,7 @@ import time
 import gc
 from Projection import absoluteCoordinate
 from Threshold import threshold
+from Action import actionInput,actionGUI
 class MainCore():
     thresholdJob=[]
     projectionJob=[]
@@ -23,39 +24,39 @@ class MainCore():
             if actionInput():
                 frame=self.feedline.read()[0]
                 self.thresholdJob.append(frame)
-
+        ## this only works when a certain key is pressed set at actionInput
     def projectionWork(self,flag):
         while flag:
             if len(self.projectionJob)!=0:
                 X,Y=absoluteCoordinate(self.projectionJob[0])
                 del self.projectionJob[0]
                 self.actionJob.append([X,Y])
-
+        ## works the same way 
     def actionWork(self,flag):
         while flag:
             if len(self.actionJob)!=0:
                 if actionGUI(self.actionJob[0]):
                     del self.actionJob[0]
                     self.count+=1
-                
+        ## Have to complete the action methods
     def thresholdWork(self,flag):
         while flag:
             if len(self.thresholdJob)!=0:
                 image_points=threshold(self.thresholdJob[0])
                 del self.thresholdJob[0]
                 self.projectionJob.append(image_points)
-
+        ## this gonna give the needed points to process
     def collectGarbage(self,flag):
         while flag:
             if self.count%10==1:
                 gc.collect()
-    ## This is to free up ram
+    ## This is to free up ram periodically
             
     def __call__(self):
         if not self.flag:
             self.flag=1
-            _thread.start_new_thread(self.capture,(self.flag))
-            _thread.start_new_thread(self.projectWork,(self.flag))
+            _thread.start_new_thread(self.capture,(self.flag))  ## The threading allows to paralely use more cores if available
+            _thread.start_new_thread(self.projectWork,(self.flag)) ## Hence helping my code to run efficently
             _thread.start_new_thread(self.actionWork,(self.flag))
             _thread.start_new_thread(self.thresholdWork,(self.flag))
             _thread.start_new_thread(self.collectGarbage,(self.flag))
