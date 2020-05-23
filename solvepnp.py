@@ -8,7 +8,7 @@ im = cv2.imread("headPosee.jpg");
 size = im.shape
     
 #2D image points. If you change the image, you need to change vector
-'''
+
 image_points = np.array([
                             (650,430),     # Nose tip
                             (657,565),     # Chin
@@ -17,7 +17,7 @@ image_points = np.array([
                             (620,495),     # Left Mouth corner
                             (690,495)      # Right mouth corner
                         ], dtype="double")
-'''
+
 
 
 # 3D model points.

@@ -1,8 +1,7 @@
 import cv2
 import numpy as np
 
-def rotationMatrix(img,image_points):
-    size = img.shape
+def rotationMatrix(size,image_points):
     """
     image_points = np.array([
                             (650,430),     # Nose tip
