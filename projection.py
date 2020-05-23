@@ -11,7 +11,7 @@ def absoluteCoordinate(size,image_points):
     midx=X//2
     midy=Y//2
     mini=[image_points[0][0],image_points[0][1]]
-    For coor in image_points[1:]:
+    for coor in image_points[1:]:
         if dsts(coor[0],coor[1])<dsts(mini[0],mini[1]):
             mini[0],mini[1]=coor[0],coor[1]
 

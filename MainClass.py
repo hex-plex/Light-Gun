@@ -5,23 +5,24 @@ import time
 import gc
 from Projection import absoluteCoordinate
 from Threshold import threshold
-from Action import actionInput,actionGUI
+from Action import ActionServer
 class MainCore():
     thresholdJob=[]
     projectionJob=[]
     actionJob=[]
     count=0
     flag=0
-    def __init__(self,cap):
+    def __init__(self,cap,actionServer):
         self.feedline = cap
         self.inittime = time.time()
+        self.acServer = actionServer
         
     def __repr__(self):
         return "<< Maincore: Processes "+str(self.count)+" >>"
     
     def capture(self,flag):
         while flag:
-            if actionInput():
+            if self.acServer.actionInput():
                 frame=self.feedline.read()[0]
                 self.thresholdJob.append(frame)
         ## this only works when a certain key is pressed set at actionInput
@@ -35,7 +36,7 @@ class MainCore():
     def actionWork(self,flag):
         while flag:
             if len(self.actionJob)!=0:
-                if actionGUI(self.actionJob[0]):
+                if self.acServer.actionGUI(self.actionJob[0]):
                     del self.actionJob[0]
                     self.count+=1
         ## Have to complete the action methods
@@ -55,22 +56,26 @@ class MainCore():
     def __call__(self):
         if not self.flag:
             self.flag=1
-            _thread.start_new_thread(self.capture,(self.flag))  ## The threading allows to paralely use more cores if available
-            _thread.start_new_thread(self.projectWork,(self.flag)) ## Hence helping my code to run efficently
-            _thread.start_new_thread(self.actionWork,(self.flag))
-            _thread.start_new_thread(self.thresholdWork,(self.flag))
-            _thread.start_new_thread(self.collectGarbage,(self.flag))
+            _thread.start_new_thread(self.capture,(self.flag,))  ## The threading allows to paralely use more cores if available
+            _thread.start_new_thread(self.projectionWork,(self.flag,)) ## Hence helping my code to run efficently
+            _thread.start_new_thread(self.actionWork,(self.flag,))
+            _thread.start_new_thread(self.thresholdWork,(self.flag,))
+            _thread.start_new_thread(self.collectGarbage,(self.flag,))
             self.inittime = time.time()
             return "Started the run"
         else:
             return "The application is runnig for "+str(time.time()-inittime)+" s"
-        
+'''        
 if __name__=="__main__":
     cap=cv2.VideoCapture(0)
-    obj = MainCore(cap)
+    a = ActionServer()
+    obj = MainCore(cap,a)
     print(obj())
-    
-    
+
+## Example usage
+'''
+if __name__=="__main__":
+    exit()
     
             
         
