@@ -24,7 +24,7 @@ class MainCore():
     def capture(self,flag):
         while flag:
             if self.acServer.actionInput():
-                frame=self.feedline.read()[0]
+                frame=self.feedline.read()[1]
                 self.thresholdJob.append(frame)
         ## this only works when a certain key is pressed set at actionInput
     def projectionWork(self,flag):
@@ -44,9 +44,9 @@ class MainCore():
     def thresholdWork(self,flag):
         while flag:
             if len(self.thresholdJob)!=0:
-                image_points=threshold(self.thresholdJob[0])
+                size,image_points=threshold(self.thresholdJob[0])
                 del self.thresholdJob[0]
-                self.projectionJob.append(image_points)
+                self.projectionJob.append([size,image_points])
         ## this gonna give the needed points to process
     def collectGarbage(self,flag):
         while flag:
@@ -65,8 +65,8 @@ class MainCore():
             self.inittime = time.time()
             return "Started the run"
         else:
-            return "The application is runnig for "+str(time.time()-inittime)+" s"
-'''        
+            return "The application is runnig for "+str(time.time()-self.inittime)+" s"
+        
 if __name__=="__main__":
     cap=cv2.VideoCapture(0)
     a = ActionServer()
@@ -74,9 +74,9 @@ if __name__=="__main__":
     print(obj())
 
 ## Example usage
-'''
-if __name__=="__main__":
-    exit()
+
+#if __name__=="__main__":
+#    exit()
     
             
         

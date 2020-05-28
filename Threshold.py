@@ -1,5 +1,5 @@
 import cv2
-import numpy
+import numpy as np
 
 def threshold(img):
     #This piece should threshold the four corners as image_points
@@ -8,7 +8,7 @@ def threshold(img):
     #This should be a good method rather than the normal ir
     #Else the aruco markers are good choice but they are computationally expensive
     #default
-    return np.array([[0,0]])
+    return img.shape,np.array([[0,0]])
 
 
 if __name__=="__main__":

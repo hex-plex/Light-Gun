@@ -5,7 +5,8 @@ from RotationMatrix import rotationMatrix
 def dsts(x1,y1,x0=0,y0=0):
     return (x1-x0)**2 + (y1-y0)**2
 
-def absoluteCoordinate(size,image_points):
+def absoluteCoordinate(data):
+    size,image_points = data[0],data[1]
     X=size[0]
     Y=size[1]
     midx=X//2
@@ -17,7 +18,7 @@ def absoluteCoordinate(size,image_points):
 
     Yp=midy-mini[1]
     Xp=midx-mini[0]
-    rotation = rotationMatrix(img.shape,image_points)
+    rotation = rotationMatrix(size,image_points)
     Xr=Xp/np.cos(rotation[0])## I have not yet set the base system to evaluate
     Yr=Yp/np.cos(rotation[1])## I have not yet set the base system to evaluate
     Zr = complex(Xr,Yr)

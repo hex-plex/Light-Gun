@@ -1,21 +1,21 @@
 import pyautogui as pyg
-import msvcrt
+from pyHook import HookManager
 import time
 import _thread
 
 class ActionServer():
     ## While initializing set the key you want to use to trigger
-    def __init__(self,char=b'o'):
+    def __init__(self,char='F'):
         self.buffer=[]
         self.Key__t=char
         self.flag=0
+        self.hm = HookManager()
         
-    def actionRead(self):
-        while True:
-            if msvcrt.kbhit():
-                key_=msvcrt.getch()
-                if true:
-                    self.buffer.append(time.time())
+    def actionRead(self,event):
+        if event.Key==self.Key__t:
+            self.buffer.append(time.time())
+        return True
+            
     ## This cannot be used as it cant get background key inputs
     ## This would act like a asynchronous server as it has to be
     def actionInput(self):
@@ -38,7 +38,9 @@ class ActionServer():
     def __call__(self):
         if not self.flag:
             self.flag=1
-            _thread.start_new_thread(self.actionRead,())
+            #_thread.start_new_thread(self.actionRead,())
+            self.hm.KeyDown = self.actionRead
+            self.hm.HookKeyboard()
             print("The server is running")
         else:
             print("Server is already running")
