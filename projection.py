@@ -21,11 +21,9 @@ def absoluteCoordinate(data):
     rotation = rotationMatrix(size,image_points)
     Xr=Xp/np.cos(rotation[0])## I have not yet set the base system to evaluate
     Yr=Yp/np.cos(rotation[1])## I have not yet set the base system to evaluate
-    Zr = complex(Xr,Yr)
-    Zr *= np.exp(complex(0,rotation[2]))  ## This computationally superior to other methods as numpy optimizes it very well
-    Xr = np.real(Zr)
-    Yr = np.imag(Zr)   ## I have not yet set the base system to evaluate
-    return Xr,Yr
+    Xt = np.cos(rotation[2])*Xr - np.sin(rotation[2])*Yr
+    Yt = np.sin(rotation[2])*Xr + np.cos(rotation[2])*Yr
+    return Xt,Yt
     
             
 if __name__=="__main__":
