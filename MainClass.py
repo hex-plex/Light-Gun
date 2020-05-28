@@ -66,7 +66,7 @@ class MainCore():
             return "Started the run"
         else:
             return "The application is runnig for "+str(time.time()-self.inittime)+" s"
-        
+'''        
 if __name__=="__main__":
     cap=cv2.VideoCapture(0)
     a = ActionServer()
@@ -74,9 +74,9 @@ if __name__=="__main__":
     print(obj())
 
 ## Example usage
-
-#if __name__=="__main__":
-#    exit()
+'''
+if __name__=="__main__":
+    exit()
     
             
         
