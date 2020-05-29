@@ -15,7 +15,8 @@ def configFrame(img):
     ## Though we would any way use the threspoint as modelpoints
     ## But the points after threshold the relative positioning should be done so that
     ## its mapped to the actualPoints hence the precise position is found
-        np.savetxt("modelPoints",thrimgpoints,delimiter=",")
+        np.savetxt("modelPoints.xyz",thrimgpoints,delimiter=",")
+        np.savetxt("precPoints.xyz",actualPoints,delimiter=",")
         return True
     except:
         print("Config failed try to manually doing it")
