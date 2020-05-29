@@ -1,12 +1,13 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("headPosee.jpg")
+cap = cv2.VideoCapture(0)
+img=cap.read()[1]
+r=cv2.selectROI(img)
+imp=img[r[1]:r[1]+r[3],r[0]:r[0]+r[2]]
+low=np.array([imp[:,:,0].min(),imp[:,:,1].min(),imp[:,:,2].min()])
+high=np.array([imp[:,:,0].max(),imp[:,:,1].max(),imp[:,:,2].max()])
 
-print(img.shape)
-points=[(690,495)]
-
-for point in points:
-    cv2.circle(img,point,1,(255,0,0),2)
-    cv2.imshow("frame",img)
-    cv2.waitKey(0)
+mask = cv2.inRange(img,low,high)
+cv2.imshow("all the points",mask)
+cv2.waitKey(0)
