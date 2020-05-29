@@ -22,8 +22,8 @@ def threshold(img):
     temp=[]
     epsilon=60
     for cnt,heir in sortList:
-        if heir[-1]!=-1:
-            continue
+        if heir[-1]!=-1: 
+            continue # This to save us from some overlapping detected ones to remove with heirarchy
         print(cv2.contourArea(cnt))
         if len(temp)==0:
             temp.append(cnt)
@@ -39,7 +39,7 @@ def threshold(img):
     ## But later a ir led can be fit in the center
     if len(temp)<4:
         raise Exception("The contour could not be found on the screen")
-    temp = temp[:4]
+    temp = temp[:4] # This is again not a good method
     final = 4*[0]
     for i in range(len(temp)):
         M = cv2.moments(temp[i])
