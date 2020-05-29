@@ -35,7 +35,7 @@ class MainCore():
                     X,Y=absoluteCoordinate(self.projectionJob[0])
                     del self.projectionJob[0]
                     self.actionJob.append([X,Y])
-                except NoConfigError as nce:
+                except Exception as nce:
                     print(nce)
                     print("Starting the config process")
                     print("Keep the frame straight perpendicular to vision")
@@ -66,7 +66,7 @@ class MainCore():
                     size,image_points=threshold(self.thresholdJob[0])
                     del self.thresholdJob[0]
                     self.projectionJob.append([size,image_points])
-                except NotFoundError as nfe:
+                except Exception as nfe:
                     print(nfe)
                     exit()
         ## this gonna give the needed points to process
