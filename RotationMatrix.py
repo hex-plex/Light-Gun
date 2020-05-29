@@ -4,7 +4,7 @@ import numpy as np
 def rotationMatrix(size,image_points):
     
     ## This should be obtained while configuring the gun They are mostly 2D plane
-    model_points = np.loadtxt("modelPoints.xyz")
+    model_points = np.loadtxt("modelPoints.xyz",delimiter=",")
     if len(model_points)!=4:
         raise NoConfigError("Config the the model points")
 
