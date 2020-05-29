@@ -62,9 +62,13 @@ class MainCore():
     def thresholdWork(self,flag):
         while flag:
             if len(self.thresholdJob)!=0:
-                size,image_points=threshold(self.thresholdJob[0])
-                del self.thresholdJob[0]
-                self.projectionJob.append([size,image_points])
+                try:
+                    size,image_points=threshold(self.thresholdJob[0])
+                    del self.thresholdJob[0]
+                    self.projectionJob.append([size,image_points])
+                except NotFoundError as nfe:
+                    print(nfe)
+                    exit()
         ## this gonna give the needed points to process
     def collectGarbage(self,flag):
         while flag:

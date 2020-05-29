@@ -17,9 +17,11 @@ def configFrame(img):
     ## its mapped to the actualPoints hence the precise position is found
         np.savetxt("modelPoints.xyz",thrimgpoints,delimiter=",")
         np.savetxt("precPoints.xyz",actualPoints,delimiter=",")
+        cv2.destroyAllWindows()
         return True
     except:
         print("Config failed try to manually doing it")
+        cv2.destroyAllWindows()
         return False
     
                
