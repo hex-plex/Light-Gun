@@ -6,6 +6,7 @@ import gc
 from Projection import absoluteCoordinate
 from Threshold import threshold
 from Action import ActionServer
+from PointConfig import configFrames
 class MainCore():
     thresholdJob=[]
     projectionJob=[]
@@ -30,9 +31,26 @@ class MainCore():
     def projectionWork(self,flag):
         while flag:
             if len(self.projectionJob)!=0:
-                X,Y=absoluteCoordinate(self.projectionJob[0])
-                del self.projectionJob[0]
-                self.actionJob.append([X,Y])
+                try:
+                    X,Y=absoluteCoordinate(self.projectionJob[0])
+                    del self.projectionJob[0]
+                    self.actionJob.append([X,Y])
+                except NoConfigError as nce:
+                    print(nce)
+                    print("Starting the config process")
+                    print("Keep the frame straight perpendicular to vision")
+                    print("in 3..",end="")
+                    time.sleep(1)
+                    print("2..",end="")
+                    time.sleep(1)
+                    print("1..",end="")
+                    time.sleep(1)
+                    print("0")
+                    frame = self.feedline()[1]
+                    if configFrame(frame):
+                        print("Config Complete Succesfully")
+                    else:
+                        exit()                  
         ## works the same way 
     def actionWork(self,flag):
         while flag:
@@ -66,7 +84,7 @@ class MainCore():
             return "Started the run"
         else:
             return "The application is runnig for "+str(time.time()-self.inittime)+" s"
-'''        
+       
 if __name__=="__main__":
     cap=cv2.VideoCapture(0)
     a = ActionServer()
@@ -74,9 +92,9 @@ if __name__=="__main__":
     print(obj())
 
 ## Example usage
-'''
-if __name__=="__main__":
-    exit()
+
+#if __name__=="__main__":
+ #   exit()
     
             
         
