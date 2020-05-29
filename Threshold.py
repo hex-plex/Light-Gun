@@ -11,6 +11,7 @@ def threshold(img):
     #This should be a good method rather than the normal ir
     #Else the aruco markers are good choice but they are computationally expensive
     #default
+    img = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
     lowgreen = np.array([0,0,0]) ## This is to be set yet
     highgreen = np.array([0,0,0]) ## even this
     mask=cv2.inRange(img,lowgreen,highgreen)
