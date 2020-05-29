@@ -7,6 +7,7 @@ def configFrame(img):
         for cor in thrimgpoints:
             cv2.circle(img,(cor[0],cor[1]),5,(0,255,0),2)
         cv2.imshow("config",img)
+        cv2.waitKey(1)
         print("Set the points irrespective of the thresholded points")
         r = cv2.selectROI(img)
         actualPoints=np.array([ [ r[1] , r[0] ] , [ r[1]+r[3] , r[0] ] , [ r[1] , r[0]+r[2] ] , [ r[1]+r[3] , r[0]+r[2] ] ])
