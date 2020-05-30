@@ -29,6 +29,8 @@ To Check for how long the server is been running
 ```python
 print(obj()) ## This display for how long the server been running
 ```
+One can change the example usage and use it directly for their use case
+and run the MainClass.py as I did
 ![Setup](https://raw.githubusercontent.com/hex-plex/Light-Gun.apk/master/images/working_with_manual_scalling.jpg)
 
 For Configuring the thresholding points that is the green cut outs in my case you can use the red thres to find the range 
