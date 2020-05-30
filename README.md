@@ -29,7 +29,7 @@ To Check for how long the server is been running
 ```python
 print(obj()) ## This display for how long the server been running
 ```
-![Setup](../images/working_with_manually_scaling.jpg)
+![Setup](https://github.com/hex-plex/Light-Gun.apk/tree/master/images/working_with_manually_scaling.jpg)
 
 For Configuring the thresholding points that is the green cut outs in my case you can use the red thres to find the range 
 and and then use PointConfig to configure them as follows
@@ -44,7 +44,7 @@ configFrame(frame)        ## Starting the configuration process
 After configuration the program while work once the scalling is set which would be in the next update
 
 **This is a demo of the program by putting a manual scalling to the cursor coordinates**
-![Working demo](../images/working_with_manually_scaling2.jpg)
+![Working demo](https://github.com/hex-plex/Light-Gun.apk/tree/master/images/working_with_manually_scaling2.jpg)
 
 ## Reference: 
 - This is for getting R and t matrix  https://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/
