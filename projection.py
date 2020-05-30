@@ -23,7 +23,8 @@ def absoluteCoordinate(data):
     Yr=Yp/np.cos(rotation[1])## I have not yet set the base system to evaluate
     Xt = np.cos(rotation[2])*Xr - np.sin(rotation[2])*Yr
     Yt = np.sin(rotation[2])*Xr + np.cos(rotation[2])*Yr
-    return Xt,Yt
+    return Xt,Yt  ## these are to be scaled to the real coordinates of screen
+
     
             
 if __name__=="__main__":

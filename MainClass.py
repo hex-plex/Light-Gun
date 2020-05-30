@@ -92,16 +92,17 @@ class MainCore():
         else:
             return "The application is runnig for "+str(time.time()-self.inittime)+" s"
        
+"""
 if __name__=="__main__":
     cap=cv2.VideoCapture("http://192.168.43.1:8080/video")
     a = ActionServer()
     obj = MainCore(cap,a)
     print(obj())
-
+"""
 ## Example usage
 
-#if __name__=="__main__":
- #   exit()
+if __name__=="__main__":
+    exit()
     
             
         
