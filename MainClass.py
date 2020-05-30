@@ -100,7 +100,6 @@ if __name__=="__main__":
     print(obj())
 """
 ## Example usage
-
 if __name__=="__main__":
     exit()
     

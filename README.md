@@ -1,15 +1,18 @@
-<H2> Light-Gun.apk </H2><hr>
-<H4>This is to create a light gun using Opencv and camera module of a android mobile</H4>
-<hr>
-<p>Bored in the quarantined period of corona seeing my old video game light gun inspired a idea of light gun in lcd monitors being inspired by <b>SINDEN</b> light gun I went on building this as I am not able to recieve my shipments.
-<h4>reference:</h4>
-<ul>  
-  <li> This is for getting R and t matrix  https://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/</li>
-  <li> This is for adjusting focal length (approximation) https://www.learnopencv.com/approximate-focal-length-for-webcams-and-cell-phone-cameras/ </li>
-  <li> The display Tracking based on ir led is noisy or cant be trusted as a display of full of colors exits next to it a more robust solution is to be found</li>
-  <li> Either 4 stickers on each corner can be struck and initial calibration can be done to map then on to the display or the screen</li>
-  <li> The best solution is to create some software to make some kind of points on to the screen all along the run </li>
-  <li> Basic structure completed with multithreading to split the work and decrease latency</li>
-  <li> Trying to port this on python for prototyping it well on raspberry pi and then start working on mobile as its not very hand on mobile but a good encloser and trigger should work well with the android app</li>
-</ul>
+#Light-Gun.apk 
+##This is to create a light gun using Opencv and camera module of a android mobile
+Bored in the quarantined period seeing my old video game with light gun inspired a idea of light gun in lcd monitors , I went on building it mainly as a android package as it would be accessable for any one.
+>For now I have implemented on python using my phones camera module 
+##ToDo:
+- Scale the input screen coordinates with respect to the actual coordinates
+- Utilize the precCoor to project or clip in the actual plane rather than 
+- Use the **relative thresholding** to make a better estimate of the detection contours(This is consider something white on the screen and then threshold the color on basis of **Color-White** rather than the **Color** itself as then it would clear up most of the change in lighting scenario)
+- Use the ir leds to be sure to not be thresholding any other contour
+- Trying to port this on python for prototyping it well on raspberry pi and then start working on mobile as its not very hand on mobile but a good encloser and trigger should work well with the android app
+- Convert the code into java based android package for any one to use.
+##Reference: 
+- This is for getting R and t matrix  https://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/
+- This is for adjusting focal length (approximation) https://www.learnopencv.com/approximate-focal-length-for-webcams-and-cell-phone-cameras/
+- The best solution is to create some software to make some kind of points on to the screen all along the run 
+- Basic structure completed with multithreading to split the work and decrease latency
+
   
