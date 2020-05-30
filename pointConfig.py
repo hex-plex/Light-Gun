@@ -2,12 +2,12 @@ import numpy as np
 import cv2
 from Threshold import threshold
 def configFrame(img):
-    try:
+    
         _,thrimgpoints=threshold(img)
         for cor in thrimgpoints:
             cv2.circle(img,(cor[0],cor[1]),5,(0,255,0),2)
         cv2.imshow("config",img)
-        cv2.waitKey(1)
+        cv2.waitKey(0)
         print("Set the points irrespective of the thresholded points")
         r = cv2.selectROI(img)
         actualPoints=np.array([ [ r[1] , r[0] ] , [ r[1]+r[3] , r[0] ] , [ r[1] , r[0]+r[2] ] , [ r[1]+r[3] , r[0]+r[2] ] ])
@@ -20,9 +20,14 @@ def configFrame(img):
         np.savetxt("precPoints.xyz",actualPoints,delimiter=",")
         cv2.destroyAllWindows()
         return True
-    except:
+        '''
+except:
         print("Config failed try to manually doing it")
         cv2.destroyAllWindows()
         return False
-    
+    '''
                
+if __name__=="__main__":
+    cap=cv2.VideoCapture("http://192.168.43.1:8080/video")
+    frame=cap.read()[1]
+    configFrame(frame)

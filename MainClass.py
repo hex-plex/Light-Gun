@@ -6,7 +6,7 @@ import gc
 from Projection import absoluteCoordinate
 from Threshold import threshold
 from Action import ActionServer
-from PointConfig import configFrames
+from PointConfig import configFrame
 class MainCore():
     thresholdJob=[]
     projectionJob=[]
@@ -46,11 +46,13 @@ class MainCore():
                     print("1..",end="")
                     time.sleep(1)
                     print("0")
-                    frame = self.feedline()[1]
+                    frame = self.feedline.read()[1]
                     if configFrame(frame):
                         print("Config Complete Succesfully")
                     else:
-                        exit()                  
+                        time.sleep(3)
+                        exit()
+                                        
         ## works the same way 
     def actionWork(self,flag):
         while flag:
@@ -65,9 +67,10 @@ class MainCore():
                 try:
                     size,image_points=threshold(self.thresholdJob[0])
                     del self.thresholdJob[0]
-                    self.projectionJob.append([size,image_points])
+                    self.projectionJob.append((size,image_points))
                 except Exception as nfe:
                     print(nfe)
+                    time.sleep(5)
                     exit()
         ## this gonna give the needed points to process
     def collectGarbage(self,flag):
@@ -90,7 +93,7 @@ class MainCore():
             return "The application is runnig for "+str(time.time()-self.inittime)+" s"
        
 if __name__=="__main__":
-    cap=cv2.VideoCapture(0)
+    cap=cv2.VideoCapture("http://192.168.43.1:8080/video")
     a = ActionServer()
     obj = MainCore(cap,a)
     print(obj())
