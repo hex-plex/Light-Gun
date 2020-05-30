@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 from Threshold import threshold
 def configFrame(img):
-    
+    try:
         _,thrimgpoints=threshold(img)
         for cor in thrimgpoints:
             cv2.circle(img,(cor[0],cor[1]),5,(0,255,0),2)
@@ -20,14 +20,16 @@ def configFrame(img):
         np.savetxt("precPoints.xyz",actualPoints,delimiter=",")
         cv2.destroyAllWindows()
         return True
-        '''
-except:
+        
+    except:
         print("Config failed try to manually doing it")
         cv2.destroyAllWindows()
         return False
-    '''
+    
                
 if __name__=="__main__":
-    cap=cv2.VideoCapture("http://192.168.43.1:8080/video")
+    #cap=cv2.VideoCapture("http://192.168.43.1:8080/video")
+    ## Put in your videafeed here
+    cap=cv2.VideoCapture(1)
     frame=cap.read()[1]
     configFrame(frame)
