@@ -9,6 +9,11 @@ Bored in the quarantined period seeing my old video game with light gun inspired
 - Use the ir leds to be sure to not be thresholding any other contour
 - Trying to port this on python for prototyping it well on raspberry pi and then start working on mobile as its not very hand on mobile but a good encloser and trigger should work well with the android app
 - Convert the code into java based android package for any one to use.
+##Glimpse:
+[Setup](/images/working_with_manually_scaling.jpg)
+
+[Working demo](/images/working_with_manually_scaling2.jpg)
+
 ##Reference: 
 - This is for getting R and t matrix  https://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/
 - This is for adjusting focal length (approximation) https://www.learnopencv.com/approximate-focal-length-for-webcams-and-cell-phone-cameras/
