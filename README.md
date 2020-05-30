@@ -7,6 +7,7 @@ Bored in the quarantined period seeing my old video game with light gun inspired
 ## ToDo:
 - Scale the input screen coordinates with respect to the actual coordinates
 - Utilize the precCoor to project or clip in the actual plane rather than 
+- Put a camera module in a toy gun to get the feed from there. (for now i used my phones camera module in demo)
 - Use the **relative thresholding** to make a better estimate of the detection contours(This is consider something white on the screen and then threshold the color on basis of **Color-White** rather than the **Color** itself as then it would clear up most of the change in lighting scenario)
 - Use the ir leds to be sure to not be thresholding any other contour
 - Trying to port this on python for prototyping it well on raspberry pi and then start working on mobile as its not very hand on mobile but a good encloser and trigger should work well with the android app
