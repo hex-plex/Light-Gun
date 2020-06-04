@@ -24,7 +24,7 @@ print(heirarchy)
 contheir=zip(contour,np.squeeze(heirarchy))
 sortList = sorted(contheir,key=lambda x: cv2.contourArea(x[0]),reverse=True)
 temp=[]
-epsilon=0.4*cv2.contourArea(sortList[0][0])
+epsilon=0.5*cv2.contourArea(sortList[0][0])
 for cnt,heir in sortList:
     if heir[-1]!=-1:
         continue
@@ -45,7 +45,10 @@ temp = temp[:4]
 final = 4*[0]
 for i in range(len(temp)):
     M = cv2.moments(temp[i])
-    final[i] = np.array([int(M['m10']/M['m00']),int(M['m01']/M['m00'])])
+    try:
+        final[i] = np.array([int(M['m10']/M['m00']),int(M['m01']/M['m00'])])
+    except:
+        pass
 final  = sorted(final,key = lambda x : dst(x[0],x[1]) )
 cv2.drawContours(hsv,temp,-1,(255,0,0),2)
 cv2.imshow("al",hsv)
