@@ -5,6 +5,7 @@ Bored in the quarantined period seeing my old video game with light gun inspired
 >For now I have implemented on python using my phones camera module 
 
 ## ToDo:
+- Configure the camera for more acurate measurements.
 - Scale the input screen coordinates with respect to the actual coordinates
 - Utilize the precCoor to project or clip in the actual plane rather than 
 - Put a camera module in a toy gun to get the feed from there. (for now i used my phones camera module in demo)
