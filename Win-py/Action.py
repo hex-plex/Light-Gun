@@ -6,27 +6,19 @@ import _thread
 class ActionServer():
     ## While initializing set the key you want to use to trigger
     def __init__(self,char='F'):
-        self.buffer=[]
         self.Key__t=char
         self.flag=0
         self.hm = HookManager()
+        self._callbacks =[]
         
     def actionRead(self,event):
         if event.Key==self.Key__t:
-            self.buffer.append(time.time())
+            for callback in self._callbacks:
+                callback(True)
         return True
             
     ## This cannot be used as it cant get background key inputs
     ## This would act like a asynchronous server as it has to be
-    def actionInput(self):
-        if len(self.buffer)==0:
-            return False
-        while (len(self.buffer)!=0):
-            if (time.time()-self.buffer[0]) < 0.5 :
-                del self.buffer[0]
-                return True
-            del self.buffer[0]
-        return False
 
     def actionGUI(self,coor):
         try :
