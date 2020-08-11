@@ -83,29 +83,31 @@ class MainCore():
     @property
     def counter(self):
         return self._count
+
     @counter.setter
     def set_count(self,new_value):
         if new_value%10==0:
-            t = threading.thread(target=self.collectGarbage,(True,))
+            t = threading.thread(target=self.collectGarbage,args=(True,))
             t.start()
         self._count=new_value
         
     def __call__(self):
         if not self.flag:
             self.flag=1
-            acserver._callbacks.append(self.capture)
+            self.acServer._callbacks.append(self.capture)
             self.inittime = time.time()
             return "Started the run"
         else:
             return "The application is runnig for "+str(time.time()-self.inittime)+" s"
        
-"""
+
 if __name__=="__main__":
     cap=cv2.VideoCapture("http://192.168.43.1:8080/video")
     a = ActionServer()
     obj = MainCore(cap,a)
     print(obj())
-"""
+    while True:
+        pass
 ## Example usage
 if __name__=="__main__":
     exit()
