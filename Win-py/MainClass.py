@@ -16,6 +16,7 @@ class MainCore():
     def __init__(self,captureModule=None,actionServer=None):
         self.feedline = captureModule
         self.inittime = time.time()
+        self._count=1
         self.acServer = actionServer
         self.acServer()
         
@@ -58,7 +59,7 @@ class MainCore():
         while flag and len(self.actionJob)!=0:
             act = self.actionJob.pop(0)
             if self.acServer.actionGUI(act):
-                self.counter+=1
+                self.counter = self._count+1
             else:
                 self.actionJob.insert(0)
         return True
@@ -77,21 +78,22 @@ class MainCore():
                 exit()
         ## this gonna give the needed points to process
     def collectGarbage(self,flag):
-        while flag:
-            if self.counter%10==1:
-                gc.collect()
-    ## This is to free up ram periodically
+        gc.collect()
+    ## This is to free up ram periodically but rather a more complicated approach can be taken
     @property
-    def counter():        
+    def counter(self):
+        return self._count
+    @counter.setter
+    def set_count(self,new_value):
+        if new_value%10==0:
+            t = threading.thread(target=self.collectGarbage,(True,))
+            t.start()
+        self._count=new_value
+        
     def __call__(self):
         if not self.flag:
             self.flag=1
             acserver._callbacks.append(self.capture)
-            #_thread.start_new_thread(self.capture,(self.flag,))  ## The threading allows to paralely use more cores if available
-            #_thread.start_new_thread(self.projectionWork,(self.flag,)) ## Hence helping my code to run efficently
-            #_thread.start_new_thread(self.actionWork,(self.flag,))
-            #_thread.start_new_thread(self.thresholdWork,(self.flag,))
-            _thread.start_new_thread(self.collectGarbage,(self.flag,))
             self.inittime = time.time()
             return "Started the run"
         else:
