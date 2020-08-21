@@ -6,9 +6,10 @@ Configuration here can be split into three part
 - Distortion and Transformation of the camera
 - Auto white balance, ISO and temperature control
 - The point mapping of the leds to the display
-## Distortion and Transformation of the Camera
+
+### Distortion and Transformation of the Camera
 Run the cameraCalibrateOnce.cpp to get the Distortion and Transformation matrix of the camera and will store this into a file which can be reused accross all operations. You would need to have Checkerboard to configure this which is a little inconvenient but is a neccesary step. But one could approximate the same if and only if they dont have a lens attached to the camera which skewes ( You can look for the approximation in the Python scripts or visit the link in the main README).
-## Auto white Balance, ISO and temperature control
+### Auto white Balance, ISO and temperature control
 This step is important to keep the thresholding values consistent over all the runs. You can use OpenCV directly to SET these values of the camera parameter.<br/>
 Ex:- <br/>
 ```C++
@@ -38,5 +39,5 @@ If you change your hardware frequently then you can add these into ~/.profile or
 echo "v4l2-ctl --set-ctrl=white_balance_auto_preset=0" >> ~/.profile
 ```
 And so on as one wants to implement these.
-## The point mapping
+### Point mapping
 Run the PointCalibration.cpp to get the mapping store do note have the camera as parallel to the screen as possible .
