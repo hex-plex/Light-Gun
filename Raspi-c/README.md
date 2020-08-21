@@ -11,7 +11,7 @@ Run the cameraCalibrateOnce.cpp to get the Distortion and Transformation matrix 
 ## Auto white Balance, ISO and temperature control
 This step is important to keep the thresholding values consistent over all the runs. You can use OpenCV directly to SET these values of the camera parameter.<br/>
 Ex:- <br/>
-```Cplusplus
+``` Cplusplus
 cap.set(cv::CAP_PROP_BRIGHTNESS,50);
 ```
 <br/>
@@ -19,7 +19,7 @@ many more parameters can be seen in OpenCV docs<br/>
 But , This rather doesnt work well with all the hardware types and a lot of times fails to fetch the camera api one has.<br/>
 The best solution is to use the Linux Kernel which the Camera uses, mostly it is V4L(VideoForLinux).<br/>
 you can check it out as follows
-```bash
+``` bash
 sudo apt-get install v4l-utils
 v4l2-ctl --list-devices  ## This would show you all the devices registered under the api
 v4l2-ctl -d /dev/video0 --list-ctrls | less
@@ -27,7 +27,7 @@ echo "This would list all the controls your camera can be operated with."
 ```
 <br/>
 Your controls may very from mine but there would be equivalent controls in most of the camera modules.<br/>
-```bash
+``` bash
 v4l2-ctl --set-ctrl=white_balance_auto_preset=0 ## This removes the auto configuration of white Balance
 echo "The parameters below are very specific to the hardware and ones liking and doesnt make any major impact"
 v4l2-ctl --set-ctrl=blue_balance=1500
@@ -36,7 +36,7 @@ v4l2-ctl --set-ctrl=sharpness=50
 ```
 <br/>
 If you change your hardware frequently then you can add these into ~/.profile or even ~/.bashrc (if one chooses to use the setting only in the terminal)<br/>
-```bash
+``` bash
 echo "v4l2-ctl --set-ctrl=white_balance_auto_preset=0" >> ~/.profile
 ```
 <br/> And so on as one wants to implement these.
