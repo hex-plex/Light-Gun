@@ -1,7 +1,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
-#include <opencv/highgui/highgui.hpp>
-#include <opencv/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 #include <stdio.h>
 #include <iostream>
 #include <string>
@@ -21,7 +21,7 @@ int main(int argc,char** argv){
 
     std::vector<std::vector<cv::Point3f> > objpoints;
 
-    std::vector<std::vector<cv::Point3f> > imgpoints;
+    std::vector<std::vector<cv::Point2f> > imgpoints;
 
     std::vector<cv::Point3f> objp;
     for(int i(0); i<CHECKERBOARD[1];i++){
@@ -31,7 +31,7 @@ int main(int argc,char** argv){
     std::vector<cv::String> images;
     if (imgCollection){
         cv::VideoCapture cap;
-        cap.open(0,CV::CAP_ANY);
+        cap.open(0,cv::CAP_ANY);
         if(!cap.isOpened()){
             std::cout<<"Camera couldnt be opened\n";
             return -1;
@@ -60,7 +60,7 @@ int main(int argc,char** argv){
 
     std::vector<cv::Point2f> corner_pts;
     bool success;
-    for (int i(0);i<images.size(0);i++){
+    for (int i(0);i<images.size();i++){
         frame = cv::imread(images[i]);
         cv::cvtColor(frame,gray,cv::COLOR_BGR2GRAY);
 
@@ -87,6 +87,7 @@ int main(int argc,char** argv){
     std::cout<<"distCoeffs: "<<distCoeffs<<"\n";
     std::cout<<"Rotation vector: "<<R<<"\n";
     std::cout<<"Translation vector: "<<T<<"\n";
+    cv::saveCameraParams();
     return 0;
 
 }
