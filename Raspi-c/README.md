@@ -31,6 +31,10 @@ echo "The parameters below are very specific to the hardware and ones liking and
 v4l2-ctl --set-ctrl=blue_balance=1500
 v4l2-ctl --set-ctrl=red_balance=1200
 v4l2-ctl --set-ctrl=sharpness=50
-```
+```<br/>
+If you change your hardware frequently then you can add these into ~/.profile or even ~/.bashrc (if one chooses to use the setting only in the terminal)<br/>
+```bash
+echo "v4l2-ctl --set-ctrl=white_balance_auto_preset=0" >> ~/.profile
+```<br/> And so on as one wants to implement these.
 ## The point mapping
 Run the PointCalibration.cpp to get the mapping store do note have the camera as parallel to the screen as possible .
