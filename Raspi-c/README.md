@@ -13,7 +13,7 @@ Run the cameraCalibrateOnce.cpp to get the Distortion and Transformation matrix 
 This step is important to keep the thresholding values consistent over all the runs. You can use OpenCV directly to SET these values of the camera parameter.<br/>
 Ex:- <br/>
 ```C++
-cap.set(cv::CAP_PROP_BRIGHTNESS,50);
+cap.set(cv::CAP_PROP_BRIGHTNESS,20);
 ```
 many more parameters can be seen in OpenCV docs<br/>
 But , This rather doesnt work well with all the hardware types and a lot of times fails to fetch the camera api one has.<br/>
