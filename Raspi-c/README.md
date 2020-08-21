@@ -11,7 +11,7 @@ Run the cameraCalibrateOnce.cpp to get the Distortion and Transformation matrix 
 ## Auto white Balance, ISO and temperature control
 This step is important to keep the thresholding values consistent over all the runs. You can use OpenCV directly to SET these values of the camera parameter.<br/>
 Ex:- <br/>
-```python
+```C++
 cap.set(cv::CAP_PROP_BRIGHTNESS,50);
 ```
 many more parameters can be seen in OpenCV docs<br/>
