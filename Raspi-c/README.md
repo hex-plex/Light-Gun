@@ -19,9 +19,10 @@ But , This rather doesnt work well with all the hardware types and a lot of time
 The best solution is to use the Linux Kernel which the Camera uses, mostly it is V4L(VideoForLinux).<br/>
 you can check it out as follows
 ```bash
-sudo apt-get install v4l-utils 
+sudo apt-get install v4l-utils
 v4l2-ctl --list-devices  ## This would show you all the devices registered under the api
-v4l2-ctl -d /dev/video0 --list-ctrls ## would list all the controls your camera can be operated with.
+v4l2-ctl -d /dev/video0 --list-ctrls | less
+echo "This would list all the controls your camera can be operated with."
 ```<br/>
 Your controls may very from mine but there would be equivalent controls in most of the camera modules.<br/>
 ```bash
@@ -29,6 +30,7 @@ v4l2-ctl --set-ctrl=white_balance_auto_preset=0 ## This removes the auto configu
 echo "The parameters below are very specific to the hardware and ones liking and doesnt make any major impact"
 v4l2-ctl --set-ctrl=blue_balance=1500
 v4l2-ctl --set-ctrl=red_balance=1200
+v4l2-ctl --set-ctrl=sharpness=50
 ```
 ## The point mapping
 Run the PointCalibration.cpp to get the mapping store do note have the camera as parallel to the screen as possible .
