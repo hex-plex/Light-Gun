@@ -13,6 +13,7 @@ struct CV_EXPORTS CameraParams
     cv::Mat R;
     cv::Mat T;
     CameraParams(){};
+    CameraParams(const cv::Mat& cm, const cv::Mat& dc, const cv::Mat& r, const cv::Mat& t):cameraMatrix(cm),distCoeffs(dc),R(r),T(t){};
     CameraParams(const CameraParams& other);
     const CameraParams& operator=(const CameraParams& other);
 };
@@ -45,11 +46,7 @@ int trialWrite(){
     cv::Mat dc = cv::Mat::eye(10, 10, CV_32S);
     cv::Mat r = cv::Mat::eye(10, 10, CV_32S);
     cv::Mat t = cv::Mat::eye(10, 10, CV_32S);
-    CameraParams asdf;
-    asdf.cameraMatrix = cm;
-    asdf.distCoeffs = dc;
-    asdf.R = r;
-    asdf.T = t;
+    CameraParams asdf(cm,dc,r,t);
     cv::FileStorage fs("trial.yaml",cv::FileStorage::WRITE);
     asdf>>fs;
     fs.release();

@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
+#include "cameraData.cpp"
 
 int CHECKERBOARD[2]{5,7};
 int main(int argc,char** argv){
@@ -87,7 +88,10 @@ int main(int argc,char** argv){
     std::cout<<"distCoeffs: "<<distCoeffs<<"\n";
     std::cout<<"Rotation vector: "<<R<<"\n";
     std::cout<<"Translation vector: "<<T<<"\n";
-    cv::saveCameraParams();
+    CameraParams data(cameraMatrix,distCoeffs,R,T);
+    cv::FileStorage fs("configuredInfo.yaml",cv::FileStorage::WRITE);
+    data>>fs;
+    fs.release();
     return 0;
 
 }
