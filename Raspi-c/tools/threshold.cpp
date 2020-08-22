@@ -18,18 +18,18 @@ static void l_V_track(int , void*){low_V = std::min(high_V-1,low_V);cv::setTrack
 static void h_V_track(int , void*){high_V = std::max(high_V,low_V+1);cv::setTrackbarPos("HIGH V",win_mask,high_V);}
 
 int main(int argc, char** argv){
-	cv::Mat image,mask;
+	cv::Mat image,mask,image_hsv;
 	cv::VideoCapture cap;
 	cap.open(0,cv::CAP_ANY);
 	if(!cap.isOpened()){
 		std::cout << "Could not open the camera" <<std::endl;
 		return -1;
 	}
-	std::cout<<"BRIGHTNESS "<<cap.set(cv::CAP_PROP_BRIGHTNESS,20)<<"\n";
+	std::cout<<"BRIGHTNESS "<<cap.set(cv::CAP_PROP_BRIGHTNESS,30)<<"\n";
 	//std::cout<<"CONTRAST "<<cap.set(cv::CAP_PROP_CONTRAST,10)<<"\n";
 	std::cout<<"EXPOSURE "<<cap.get(cv::CAP_PROP_EXPOSURE)<<"\n";
 	std::cout<<"SHARPNESS "<<cap.get(cv::CAP_PROP_SHARPNESS)<<"\n";
-	cv::namedWindow(win_cap,cv::WINDOW_AUTOSIZE);
+    cv::namedWindow(win_cap,cv::WINDOW_AUTOSIZE);
 	cv::namedWindow(win_mask,cv::WINDOW_AUTOSIZE);
 	cv::createTrackbar("LOW H",win_mask,&low_H,max_value_H, l_H_track);
 	cv::createTrackbar("HIGH H",win_mask,&high_H,max_value_H, h_H_track);
@@ -43,8 +43,8 @@ int main(int argc, char** argv){
 			std::cout<<"No image returned"<<std::endl;
 			break;
 		}
-		cv::cvtColor(image,image,cv::COLOR_BGR2HSV);
-		cv::inRange(image,cv::Scalar(low_H,low_S,low_V),cv::Scalar(high_H,high_S,high_V),mask);
+		cv::cvtColor(image,image_hsv,cv::COLOR_BGR2HSV);
+		cv::inRange(image_hsv,cv::Scalar(low_H,low_S,low_V),cv::Scalar(high_H,high_S,high_V),mask);
 		cv::imshow(win_cap,image);
 		cv::imshow(win_mask,mask);
 		if(cv::waitKey(1)==27)
