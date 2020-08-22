@@ -62,3 +62,16 @@ int trialRead(){
     return 0;
 
 }
+
+struct CV_EXPORTS PointSet {
+    cv::Point3d ptr1;
+    cv::Point3d ptr2;
+    cv::Point3d ptr3;
+    cv::Point3d ptr4;
+    cv::Point2d cnr1;
+    cv::Point2d cnr2;
+    cv::Point2d cnr3;
+    cv::Point2d cnr4;
+    PointSet(){};
+    PointSet(cv::Point3d a1):ptr1(a1){};
+};
