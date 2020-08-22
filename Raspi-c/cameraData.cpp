@@ -64,14 +64,11 @@ int trialRead(){
 }
 
 struct CV_EXPORTS PointSet {
-    cv::Point3d ptr1;
-    cv::Point3d ptr2;
-    cv::Point3d ptr3;
-    cv::Point3d ptr4;
-    cv::Point2d cnr1;
-    cv::Point2d cnr2;
-    cv::Point2d cnr3;
-    cv::Point2d cnr4;
+    cv::Point3d sa3( double(0), double(0),double(0) );
+    std::vector<cv::Point3d> pntrvec ( 4,sa3 );
+    cv::Point2d sa2( double(0), double(0) );
+    std::vector<cv::Point2d> cnrvec (4,sa2);
     PointSet(){};
-    PointSet(cv::Point3d a1):ptr1(a1){};
+    PointSet(cv::Point3d a1,cv::Point3d a2,cv::Point3d a3,cv::Point3d a4,cv::Point2d b1,cv::Point2d b2, cv::Point2d b3, cv::Point2d b4):pntrvec[0](a1),pntrvec[1](a2),pntrvec[2](a3),pntrvec[3](a4),cnrvec[0](b1),cnrvec[1](b2),cnrvec[2](b3),cnrvec[3](b4){};
+    PointSet(std::vector<cv::Point2d> &a, std::vector<cv::Point3d> &b):pntrvec(b),cnrvec(a){};
 };
