@@ -64,11 +64,43 @@ int trialRead(){
 }
 
 struct CV_EXPORTS PointSet {
-    cv::Point3d sa3( double(0), double(0),double(0) );
-    std::vector<cv::Point3d> pntrvec ( 4,sa3 );
-    cv::Point2d sa2( double(0), double(0) );
-    std::vector<cv::Point2d> cnrvec (4,sa2);
+    std::vector<cv::Point3d> pntrvec = std::vector<cv::Point3d>( 4 , cv::Point3d(0.0f,0.0f,0.0f));
+    std::vector<cv::Point2d> cnrvec = std::vector<cv::Point2d>(4 , cv::Point2d( 0.0f, 0.0f));
     PointSet(){};
-    PointSet(cv::Point3d a1,cv::Point3d a2,cv::Point3d a3,cv::Point3d a4,cv::Point2d b1,cv::Point2d b2, cv::Point2d b3, cv::Point2d b4):pntrvec[0](a1),pntrvec[1](a2),pntrvec[2](a3),pntrvec[3](a4),cnrvec[0](b1),cnrvec[1](b2),cnrvec[2](b3),cnrvec[3](b4){};
+    PointSet(cv::Point3d a1,cv::Point3d a2,cv::Point3d a3,cv::Point3d a4,cv::Point2d b1,cv::Point2d b2, cv::Point2d b3, cv::Point2d b4) {pntrvec[0]=a1,pntrvec[1]=a2,pntrvec[2]=a3,pntrvec[3]=a4,cnrvec[0]=b1,cnrvec[1]=b2,cnrvec[2]=b3,cnrvec[3]=b4;};
     PointSet(std::vector<cv::Point2d> &a, std::vector<cv::Point3d> &b):pntrvec(b),cnrvec(a){};
 };
+bool operator>>(const PointSet &a, cv::FileStorage &fs){
+    if(fs.isOpened()){
+        cv::Mat pntrs(a.pntrvec),cnrs(a.cnrvec);
+        fs<<"PNTRS"<<pntrs;
+        fs<<"CNRS"<<cnrs;
+        return true;
+    }
+    else
+        return false;
+}
+bool operator>>(cv::FileStorage &fs,PointSet &a){
+    if(fs.isOpened()){
+        cv::Mat pntrs,cnrs;
+        fs["PNTRS"]>>pntrs;
+        fs["CNRS"]>>cnrs;
+        a.pntrvec = pntrs.clone();
+        a.cnrvec = cnrs.clone();
+        return true;
+    }
+    else
+        return false;
+}
+int trialofReadWrite(){
+    PointSet a;
+    a.pntrvec[2] = cv::Point3d(0.0f,1.0f,0.0f);
+    cv::FileStorage fs("configparams.yaml",cv::FileStorage::WRITE);
+    a>>fs;
+    fs.release();
+    PointSet b;
+    cv::FileStorage ds("configparams.yaml",cv::FileStorage::READ);
+    ds>>b;
+    std::cout<<b.pntrvec[2];
+    return 0;
+}
