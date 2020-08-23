@@ -3,6 +3,7 @@
 #include "cameraData.cpp"
 #define all(c) c.start(),c.end()
 
+
 float dst(cv::Point3d &a,cv::Point3d &b){
     cv::Point3d c = a-b;
     return cv::sqrt(c.x*c.x + c.y*c.y + c.z*c.z );
@@ -49,17 +50,21 @@ bool proj2points(std::vector<cv::Point2d> &image_points,cv::Point2d &centerPoint
     cv::Mat Rt = rotation_matrix.inv()*translation_vector;
     image_points.push_back(centerPoint);
     cv::Mat finalPoints,imagePoints(image_points);
+    std::vector<cv::Point2d> pnt2d;
+    for(auto it:model_set.pntrvec){
+        pnt2d.push_back(cv::Point2d(it.x,it.y));
+    }
     std::vector<cv::Point3d> final_points = finalPoints.clone();
-    cv::Point3d x3i = (final_points[1]-final_points[0]);x3i.x/=dst(final_points[0],final_points[1]);x3i.y/=dst(final_points[0],final_points[1]);x3i.z/=dst(final_points[0],final_points[1]);
-    cv::Point3d y3i = (final_points[2]-final_points[0]);y3i.x/=dst(final_points[0],final_points[2]);y3i.y/=dst(final_points[0],final_points[2]);y3i.z/=dst(final_points[0],final_points[2]);
-    cv::Point2d x2i = (model_set.pntrvec[1]-model_set.pntrvec[0]);x2i.x/=dst(model_set.pntrvec[1],model_set.pntrvec[0]);x2i.y/=dst(model_set.pntrvec[1],model_set.pntrvec[0]);
-    cv::Point2d y2i = (model_set.pntrvec[2]-model_set.pntrvec[0]);y2i.x/=dst(model_set.pntrvec[2],model_set.pntrvec[0]);y2i.y/=dst(model_set.pntrvec[2],model_set.pntrvec[0]);
-    cv::Point2d cnr2i = (model_set.cnrvec[0]-model_set.pntrvec[0]);cnr2i.x/=dst(model_set.cnrvec[0],model_set.pntrvec[0]);cnr2i.y/=dst(model_set.cnrvec[0],model_set.pntrvec[0]);
+    cv::Point3d x3i = (final_points.at(1)-final_points.at(0));x3i.x/=dst(final_points.at(0),final_points.at(1));x3i.y/=dst(final_points.at(0),final_points.at(1));x3i.z/=dst(final_points.at(0),final_points.at(1));
+    cv::Point3d y3i = (final_points.at(2)-final_points.at(0));y3i.x/=dst(final_points.at(0),final_points.at(2));y3i.y/=dst(final_points.at(0),final_points.at(2));y3i.z/=dst(final_points.at(0),final_points.at(2));
+    cv::Point2d x2i = (pnt2d.at(1)-pnt2d.at(0)); x2i.x/=dst(pnt2d.at(1),pnt2d.at(0));x2i.y/=dst(pnt2d.at(1),pnt2d.at(0));
+    cv::Point2d y2i = (pnt2d.at(2)-pnt2d.at(0));y2i.x/=dst(pnt2d.at(2),pnt2d.at(0));y2i.y/=dst(pnt2d.at(2),pnt2d.at(0));
+    cv::Point2d cnr2i = (model_set.cnrvec.at(0)-pnt2d.at(0));cnr2i.x/=dst(model_set.cnrvec.at(0),pnt2d.at(0));cnr2i.y/=dst(model_set.cnrvec.at(0),pnt2d.at(0));
     cv::Point3d cnr3i = cnr2i.ddot(x2i)*x3i + cnr2i.ddot(y2i)*y3i;
-    cv::Point3d resultant = (final_points[4] - cnr3i);resultant.x/=dst(final_points[1],final_points[0]);resultant.y/=dst(final_points[1],final_points[0]);resultant.z/=dst(final_points[1],final_points[0]);
+    cv::Point3d resultant = (final_points.at(4) - cnr3i);resultant.x/=dst(final_points.at(1),final_points.at(0));resultant.y/=dst(final_points.at(1),final_points.at(0));resultant.z/=dst(final_points.at(1),final_points.at(0));
     resultant.x *= 2*centerPoint.x;resultant.y *= 2*centerPoint.x;
     clickcoor = cv::Point2d(resultant.x,resultant.y);
-    return (resultant.z<0.01*dst(final_points[1],final_points[0]));
+    return (resultant.z<0.01*dst(final_points.at(1),final_points.at(0)));
 }
 
 int main(){return 0;}
