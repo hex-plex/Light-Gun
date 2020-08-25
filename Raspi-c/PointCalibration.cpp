@@ -10,10 +10,10 @@ int cofigPoints(cv::VideoCapture &cap){
         return -1;
     }
     bool flag=true;
-    cv::namedWindow("Display",WINDOW_AUTOSIZE);
+    cv::namedWindow("Display",cv::WINDOW_AUTOSIZE);
     while(true){
         cap>>image;
-        if(!image.data()){
+        if(!image.data){
             std::cout<<"No image is received from the source\n";
             flag=false;break;
         }
