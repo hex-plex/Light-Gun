@@ -6,7 +6,7 @@ struct CV_EXPORTS cntHier{
     cv::Vec4i hier;
     cv::Moments mu;
     cv::Point2f mc;
-    cntHier(std::vector<cv::Point> &a,cv::Vec4i &b):cnt=a;hier=b{};
+    cntHier(std::vector<cv::Point> &a,cv::Vec4i &b):cnt=a;hier=b{mu=cv::moments(a,false);mc = cv::Point2f(mu.m10/mu.m00, mu.m01/mu.m00);};
 };
 bool operator>(const cntHier &a, const cntHier &b){
     if(a.hier[3]>b.hier[3]){return true;}
@@ -26,14 +26,12 @@ bool thresh(cv::Mat &img,std::vector<cv::Point3d> &pnts,bool flag){
     std::sort(all(arr));
     cntHier temp;
     std::vector<cv::Point> cnt;
-    std::vector<cv::Moments> mu(4);
-    std::vector<cv::Point2f> mc(4);
+    pnts.clear();
     for(int i = 0; i<4;i++){
         temp = arr.at(i);
-        cnt = temp.cnt;
-        mu[i] = cv::moments(cnt,false);
-        mc[i] = cv::Point2f(mu[i].m10/mu[i].m00, mu[i].m01/mu[i].m00);
+        pnts.push_back(cv::Point3d(temp.mc.x,temp.mc.y,10));
     }
+
     return flag;
 }
 
