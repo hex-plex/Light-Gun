@@ -24,12 +24,16 @@ int cofigPoints(cv::VideoCapture &cap){
     }
     if(!flag){return -1;}
     PointSet rad;
-    std::vector<cv::Point3d> imgpoints;
-    if(thresh(image,imgpoints,true)){
+    std::vector<cv::Point2d> imgpoints;
+    int res[] ={640,480};
+    if(thresh(image,imgpoints,true,res)){
         std::cout<<"Points were detected \n";
         std::cout<<"Select a rectangle which defines the inner part of the display the best\n";
         cv::Rect r = cv::selectROI(image);
-        rad.pntrvec = imgpoints;
+        rad.pntrvec.clear();
+        for(int i=0;i<imgpoints.size();i++){
+            rad.pntrvec.push_back(cv::Point3d(imgpoints.at(i).x,imgpoints.at(i).y,10));
+        }
         std::vector<cv::Point2d> selpoints;
         selpoints.push_back(cv::Point2d(r.x,r.y));selpoints.push_back(cv::Point2d(r.x+r.width,r.y));selpoints.push_back(cv::Point2d(r.x,r.y+r.height));selpoints.push_back(cv::Point2d(r.x+r.width,r.y+r.height));
         rad.cnrvec = selpoints;

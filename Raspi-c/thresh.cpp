@@ -1,7 +1,7 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <math.h>
-#define all(c) (c).start(),(c).end()
+#define all(c) (c).begin(),(c).end()
 int RES[2]={640,480};
 int DiagL = 800;
 struct CV_EXPORTS cntHier{
@@ -9,22 +9,24 @@ struct CV_EXPORTS cntHier{
     cv::Vec4i hier;
     cv::Moments mu;
     cv::Point2f mc;
-    cntHier(std::vector<cv::Point> &a,cv::Vec4i &b):cnt=a;hier=b{mu=cv::moments(a,false);mc = cv::Point2f(mu.m10/mu.m00, mu.m01/mu.m00);};
+    cntHier(){};
+    cntHier(std::vector<cv::Point> &a,cv::Vec4i &b):cnt(a),hier(b){mu=cv::moments(a,false),mc=cv::Point2f(mu.m10/mu.m00, mu.m01/mu.m00);}
 };
 int dst(cv::Point2f &a,cv::Point2f &b){
     cv::Point2f c = a-b;
     return std::sqrt((c.x*c.x) + (c.y*c.y));
 }
-bool operator>(const cntHier &a, const cntHier &b){
+bool operator<(const cntHier &a, const cntHier &b){
     bool flag=false;
-    if (dst(a,b)<0.07*DiagL){
-        if(a.hier[3]>b.hier[3]){return true;}
-        else if(a.hier[3]<b.hier[3]){return false;}
-        else(cv::contourArea(a)<=cv::contourArea(b.cnt)){return true;}
+    cv::Point2f amc = a.mc,bmc=b.mc;
+    if (dst(amc,bmc)<0.07*DiagL){
+        if(a.hier[3]>b.hier[3]){return false;}
+        else if(a.hier[3]<b.hier[3]){return true;}
+        else if(cv::contourArea(a.cnt)<=cv::contourArea(b.cnt)){return false;}
     }
-    if(a.mc.y-b.mc.y>=0.2*DiagL){return true;}
-    else if(a.mc.x - b.mc.x >= 0.3*DiagL){return true;}
-    else return false;
+    if(a.mc.y-b.mc.y>=0.2*DiagL){return false;}
+    else if(a.mc.x - b.mc.x >= 0.3*DiagL){return false;}
+    else return true;
 
 }
 
@@ -44,7 +46,6 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     /*
     fill in the adaptive thresholding part
     */
-
     std::vector< std::vector<cv::Point> > contours;
     std::vector<cv::Vec4i> hierachy;
     cv::findContours(img,contours,hierachy,cv::RETR_TREE,cv::CHAIN_APPROX_SIMPLE);//,cv::CHAIN_APPROX_NONE);
@@ -52,9 +53,11 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     cv::Point2f refer = cv::Point2f(0.0f,0.0f);
     cv::Point2f minn=cv::Point2f(RES[0],RES[1]),maxx=refer;
     for(int i=0;i<contours.size();i++){
-        arr.push_back(cntHier(contours.at(i),hierachy.at(i)));
-        if(dst(a.at(i).mc,refer)<dst(minn,refer))minn = a.at(i).mc;
-        if(dst(a.at(i).mc,refer)>dst(maxx,refer))maxx = a.at(i).mc;
+        if(cv::contourArea(contours.at(i))>0.001*RES[0]*RES[1]){
+            arr.push_back(cntHier(contours.at(i),hierachy.at(i)));
+            if(dst(arr.back().mc,refer)<dst(minn,refer))minn = arr.back().mc;
+            if(dst(arr.back().mc,refer)>dst(maxx,refer))maxx = arr.back().mc;
+        }
     }
     cv::Point2f diag = maxx-minn;
     DiagL = dst(diag,refer);
@@ -65,7 +68,7 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     std::vector<cv::Point2f> Final;
     cntHier st = arr.at(0);
     for(int i=0;i<arr.size();i++){
-        if(dst(st,arr.at(i))<0.05*DiagL){
+        if(dst(st.mc,arr.at(i).mc)<0.05*DiagL){
             CenterOfMass.push_back(arr.at(i).mc);
         }
         else{
@@ -80,9 +83,9 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     if(flag){
         cv::Mat dat = img.clone();
         for(int i=0;i<4;i++){
-            cv::circle(dat,cv::Point((int)Final.at(i).x,(int)Final.at(i).y),radius=10,cv::Scalar(255,0,0),-1,8,0);
+            cv::circle(dat,cv::Point((int)Final.at(i).x,(int)Final.at(i).y),10,cv::Scalar(255,0,0),-1,8,0);
         }
-        cv::imshow("Instance",img)
+        cv::imshow("Instance",img);
         cv::waitKey(0);
         cv::destroyWindow("Instance");
     }
