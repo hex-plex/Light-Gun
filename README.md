@@ -2,7 +2,8 @@
 
 ## This is to create a light gun using Opencv and camera module of a android mobile
 Bored in the quarantined period revisiting my old video games with light gun inspired a idea of light gun in lcd monitors , I went on building it mainly as a android package as it would be accessable for any one. Then ended up using a Raspberry Pi as a standalone device to able to use it accross platforms and devices.<br/>
-**Raspi-c is the main working directory for now.**
+**Raspi-c is the main working directory for now.**<br/><br/>
+**The Explanation for the working can be found in EXPLANATION.md**
 ## Contribution
 Any kind of Contribution is always welcomed. The rules for any Contribution for now is vague as I have not really structurized the project so well as mostly its in the development period, So its prone to some nasty errors(Anyways feel free to report it :smile: ), Any Idea for a better implementation is also welcome.
 ## ToDo:
