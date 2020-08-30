@@ -2,8 +2,9 @@
 #include<wiringPi.h>
 
 using namespace std;
-int count = 0;
+int ctr = 0;
 int flag=0;
+unsigned int prevTime = millis();
 void switchdown(void);
 int main(){
     wiringPiSetup();
@@ -16,12 +17,11 @@ int main(){
     return 0;
 }
 void switchdown(void){
-    if(flag==1&&!digitalRead(1)){
-    cout<<"Down\n";
-     flag=0;
-	} else if(flag==0&&digitalRead(1))
-    {	
-    	cout<<"Button Pressed \n";
-    	flag=1;
+    if(flag==1&&!digitalRead(1)&&((millis()-prevTime)>50)){
+        cout<<"Button Pressed"<<ctr<<"\n";
+     flag=0;ctr++;prevTime=millis();
+	} else if(flag==0&&digitalRead(1)&&(millis()-prevTime>50)){
+    	cout<<"Down\n";
+    	flag=1;prevTime=millis();
 	}
 }
