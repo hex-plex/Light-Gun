@@ -46,6 +46,28 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     /*
     fill in the adaptive thresholding part
     */
+    cv::Mat gray;
+    cv::cvtColor(img,gray,cv::COLOR_BGR2GRAY);
+    gray = 255 - gray;
+    cv::SimpleBlobDetector::Params params;
+    params.minThreshold = 70;
+    params.maxThreshold = 200;
+    params.filterByCircularity = true ;
+    params.minCircularity = 0.75;
+    params.filterByArea = true;
+    params.minArea = 2;
+    params.maxArea = 20;
+    params.filterByConvexity = false;
+    params.filterByInertia = false;
+    cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
+    std::vector<cv::KeyPoint> keypoints;
+    detector->detect(gray,keypoints);
+    std::vector<cv::Point2f> Final;
+    if (keypoints.size()<4)return false;
+    for(int i=0;i<4;i++){
+        Final.push_back(keypoints.at(i).pt);
+    }
+    /*
     std::vector< std::vector<cv::Point> > contours;
     std::vector<cv::Vec4i> hierachy;
     cv::findContours(img,contours,hierachy,cv::RETR_TREE,cv::CHAIN_APPROX_SIMPLE);//,cv::CHAIN_APPROX_NONE);
@@ -79,7 +101,7 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     pnts.clear();
     for(int i = 0; i<4;i++){
         pnts.push_back(cv::Point2d((double)Final.at(i).x,(double)Final.at(i).y));
-    }
+    }*/
     if(flag){
         cv::Mat dat = img.clone();
         for(int i=0;i<4;i++){
