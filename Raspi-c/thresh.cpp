@@ -40,6 +40,12 @@ cv::Point2f average(std::vector<cv::Point2f> &cm){
     return tot;
 }
 
+bool condition(const cv::KeyPoint &a,const cv::KeyPoint &b){
+    if(a.pt.y-b.pt.y>=0.2*DiagL){return false;}
+    else if(a.pt.x - b.pt.x>=0.3*DiagL){return false;}
+    else return true;
+}
+
 bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     RES[0]=res[0];
     RES[1]=res[1];
@@ -63,7 +69,16 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     std::vector<cv::KeyPoint> keypoints;
     detector->detect(gray,keypoints);
     std::vector<cv::Point2f> Final;
+    cv::Point2f refer = cv::Point2f(0.0f,0.0f);
+    cv::Point2f minn=cv::Point2f(RES[0],RES[1]),maxx=refer;
     if (keypoints.size()<4)return false;
+    for (int i=0;i<keypoints.size();i++){
+        if(dst(keypoints.at(i).pt,refer)<dst(minn,refer))minn = keypoints.at(i).pt;
+        if(dst(keypoints.at(i).pt,refer)>dst(maxx,refer))maxx = keypoints.at(i).pt;
+    }
+    cv::Point2f diag = maxx-minn;
+    DiagL = dst(diag,refer);
+    std::sort(all(keypoints),condition);
     for(int i=0;i<4;i++){
         Final.push_back(keypoints.at(i).pt);
     }
