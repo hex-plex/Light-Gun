@@ -9,11 +9,12 @@ int main(int argc, char** argv){
 		std::cout << "Could not open the camera" <<std::endl;
 		return -1;
 	}
-	std::cout<<"BRIGHTNESS "<<cap.set(cv::CAP_PROP_BRIGHTNESS,20)<<"\n";
+	std::cout<<"BRIGHTNESS "<<cap.set(cv::CAP_PROP_BRIGHTNESS,10)<<"\n";
 	//std::cout<<"CONTRAST "<<cap.set(cv::CAP_PROP_CONTRAST,10)<<"\n";
 	std::cout<<"EXPOSURE "<<cap.get(cv::CAP_PROP_EXPOSURE)<<"\n";
 	std::cout<<"SHARPNESS "<<cap.get(cv::CAP_PROP_SHARPNESS)<<"\n";
 	cv::namedWindow("Disp",cv::WINDOW_AUTOSIZE);
+    int i = 0;
 	while(1){
 		cap>>image;
 		if(image.empty()){
@@ -21,8 +22,19 @@ int main(int argc, char** argv){
 			break;
 		}
 		cv::imshow("Disp",image);
-		if(cv::waitKey(1)==27)
-			break;
+        int k = cv::waitKey(1);
+		if(k==27){
+			break;}
+        else if(k == 99){
+            cv::imwrite("/home/pi/capture"+std::to_string(i)+".jpg",image);
+            i++;
+        }
+        else if(k == 117){
+            cap.set(cv::CAP_PROP_BRIGHTNESS,std::min(100,(int)cap.get(cv::CAP_PROP_BRIGHTNESS) + 5));
+        }
+        else if(k == 100){
+            cap.set(cv::CAP_PROP_BRIGHTNESS,std::max(0,(int)cap.get(cv::CAP_PROP_BRIGHTNESS) - 5));
+        }
 	}
 	cap.release();
 	cv::destroyAllWindows();
