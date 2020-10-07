@@ -1,0 +1,3 @@
+/home/hexplex0xff/light-gun/Raspi-c/step1_build/CMakeFiles/rebuild_cache.dir
+/home/hexplex0xff/light-gun/Raspi-c/step1_build/CMakeFiles/LightGun.dir
+/home/hexplex0xff/light-gun/Raspi-c/step1_build/CMakeFiles/edit_cache.dir

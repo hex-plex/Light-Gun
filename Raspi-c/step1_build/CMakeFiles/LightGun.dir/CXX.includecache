@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hexplex0xff/light-gun/Raspi-c/main.cpp
+opencv2/highgui.hpp
+-
+opencv2/imgproc.hpp
+-
+iostream
+-
+
