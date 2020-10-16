@@ -2,7 +2,7 @@
 #include "cameraData.cpp"
 #include "thresh.cpp"
 
-int cofigPoints(cv::VideoCapture &cap){
+int configPoints(cv::VideoCapture &cap){
     std::cout<<"Please press F to select the frame when camera is parrallel to the display\n";
     cv::Mat image;
     if(!cap.isOpened()){
@@ -44,4 +44,9 @@ int cofigPoints(cv::VideoCapture &cap){
     }
     else{std::cout<<"retry with all the points in the frame and with good lighting conditions dont over expose near the points!\n";return -1;}
     return 1;
+}
+
+int main(){
+    int a = configPoints();
+    return a;
 }
