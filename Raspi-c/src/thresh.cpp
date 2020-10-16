@@ -112,17 +112,17 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
             Final.push_back(average(CenterOfMass));
             CenterOfMass.clear();
         }
-    }
+    }*/
     pnts.clear();
     for(int i = 0; i<4;i++){
         pnts.push_back(cv::Point2d((double)Final.at(i).x,(double)Final.at(i).y));
-    }*/
+    }
     if(flag){
         cv::Mat dat = img.clone();
         for(int i=0;i<4;i++){
             cv::circle(dat,cv::Point((int)Final.at(i).x,(int)Final.at(i).y),10,cv::Scalar(255,0,0),-1,8,0);
         }
-        cv::imshow("Instance",img);
+        cv::imshow("Instance",dat);
         cv::waitKey(0);
         cv::destroyWindow("Instance");
     }
