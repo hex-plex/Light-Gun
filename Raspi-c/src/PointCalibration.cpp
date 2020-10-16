@@ -47,6 +47,12 @@ int configPoints(cv::VideoCapture &cap){
 }
 
 int main(){
-    int a = configPoints();
+    cv::VideoCapture cap;
+    cap.open(0,cv::CAP_ANY);
+    if(!cap.isOpened()){
+        std::cout<<"Camera couldnt be opened\n";
+        return -1;
+    }
+    int a = configPoints(cap);
     return a;
 }
