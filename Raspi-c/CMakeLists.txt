@@ -9,5 +9,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # add the executable
 add_executable(LightGun src/main.cpp)
-add_executable(CamCalibrate src/cameraCalibrateOnce.cpp)
+add_executable(CamCalibrate src/cameraCalibrationOnce.cpp)
 add_executable(ScreenCalibrate src/PointCalibration.cpp)
