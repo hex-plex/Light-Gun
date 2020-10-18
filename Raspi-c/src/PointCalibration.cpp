@@ -55,5 +55,6 @@ int main(){
         return -1;
     }
     int a = configPoints(cap);
+    cap.release();
     return a;
 }
