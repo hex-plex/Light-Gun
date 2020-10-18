@@ -129,4 +129,3 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     return true;
 }
 
-int main(){return 0;}

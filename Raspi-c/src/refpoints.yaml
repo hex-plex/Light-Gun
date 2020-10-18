@@ -1,0 +1,12 @@
+%YAML:1.0
+---
+PNTRS: !!opencv-matrix
+   rows: 0
+   cols: 1
+   dt: "3d"
+   data: []
+CNRS: !!opencv-matrix
+   rows: 4
+   cols: 1
+   dt: "2d"
+   data: [ 297., 83., 1105., 83., 297., 538., 1105., 538. ]

@@ -6,7 +6,7 @@ project(LightGun VERSION 0.8)
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-
+set(OpenCV_DIR /usr/local/lib/cmake/opencv4)
 # add the executable
 add_executable(LightGun src/main.cpp)
 add_executable(CamCalibrate src/cameraCalibrationOnce.cpp)
