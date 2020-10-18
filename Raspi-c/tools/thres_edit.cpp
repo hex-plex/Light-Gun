@@ -56,13 +56,13 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     cv::cvtColor(img,gray,cv::COLOR_BGR2GRAY);
     gray = 255 - gray;
     cv::SimpleBlobDetector::Params params;
-    params.minThreshold = 70;
-    params.maxThreshold = 200;
+    params.minThreshold = 30;
+    params.maxThreshold = 100;
     params.filterByCircularity = true ;
     params.minCircularity = 0.75;
     params.filterByArea = true;
-    params.minArea = 2;
-    params.maxArea = 20;
+    params.minArea = 5;
+    params.maxArea = 30;
     params.filterByConvexity = false;
     params.filterByInertia = false;
     cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
