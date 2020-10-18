@@ -12,7 +12,7 @@ int main(int argc,char** argv){
     int imgCollection=false;
     std::string path = "./images/";
     if(argc>1){
-        if(argv[1]=="-N"){
+        if(std::string(argv[1])=="-N"){
             imgCollection=true;
             if(argc>2){
                 path=argv[2];
