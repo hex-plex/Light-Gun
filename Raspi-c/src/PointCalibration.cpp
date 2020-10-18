@@ -27,7 +27,7 @@ int configPoints(cv::VideoCapture &cap){
     PointSet rad;
     std::vector<cv::Point2d> imgpoints;
     int res[] ={640,480};
-    if(true){ //thresh(image,imgpoints,true,res)){
+    if(thresh(image,imgpoints,true,res)){
         std::cout<<"Points were detected \n";
         std::cout<<"Select a rectangle which defines the inner part of the display the best\n";
         cv::Rect r = cv::selectROI(image);
