@@ -1,6 +1,6 @@
 # Light-Gun
 
-## This is to create a light gun using Opencv and camera module of a android mobile
+## This is to create a light gun using Opencv and camera module
 Bored in the quarantined period revisiting my old video games with light gun inspired a idea of light gun in lcd monitors , I went on building it mainly as a android package as it would be accessable for any one. Then ended up using a Raspberry Pi as a standalone device to able to use it accross platforms and devices.<br/>
 **Raspi-c is the main working directory for now.**<br/><br/>
 **The Explanation for the working can be found in EXPLANATION.md**
@@ -14,42 +14,9 @@ Any kind of Contribution is always welcomed. The rules for any Contribution for 
 This is not the main motive now
 
 ## Glimpse:
-### **This is totally outdated, new updates are on there way**
-
-Initialize the MainCore Server with the the objects and parameters needed
-```python
-from MainClass import MainCore  ## This Runs the real code
-from Action import ActionServer ## This server is to register action from keyboard and to take action as a mouse
-import cv2  
-
-cap = cv2.VideoCapture(1)  ## This could be any external video feed for detection
-act = ActionServer('F')    ## Initializing the server with a key here 'F' would be the trigger by default its 'F' you can setit to any key on keyboard
-obj = MainCore(cap,act)    ## Initializing with the camera object (cap) and the ActionServer object (act)
-obj()                      ## This will start the server
-```
-
-To Check for how long the server is been running
-```python
-print(obj()) ## This display for how long the server been running
-```
-One can change the example usage and use it directly for their use case
-and run the MainClass.py as I did
-![Setup](https://raw.githubusercontent.com/hex-plex/Light-Gun.apk/master/images/working_with_manual_scalling.jpg)
-
-For Configuring the thresholding points that is the green cut outs in my case you can use the red thres to find the range
-and and then use PointConfig to configure them as follows
-```python
-from PointConfig import configFrame
-import cv2
-
-cap = cv2.VideoCapture(1) ## Reference of any external Camera
-frame =cap.read()[1]      ## Fetching a perpendicular viewed frame of the screen
-configFrame(frame)        ## Starting the configuration process
-```
-After configuration the program while work once the scalling is set which would be in the next update
-
-**This is a demo of the program by putting a manual scalling to the cursor coordinates**
-![Working demo](https://raw.githubusercontent.com/hex-plex/Light-Gun.apk/master/images/working_with_manual_scalling2.jpg)
+This is the glimpse of the prototype made with Raspberry pi and a toy gun with all the proccessing done on the Raspberry and only transmites messages to the local server. The previous method of running the proccessing and the actions is documented in **Win-Py** directory.<br/>
+This is the basic parts of the hardware prototype.
+![Setup](https://raw.githubusercontent.com/hex-plex/Light-Gun.apk/master/images/gun_setup.jpg)
 
 ## Reference:
 - This is for getting R and t matrix  https://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/
