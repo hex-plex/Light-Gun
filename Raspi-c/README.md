@@ -24,10 +24,10 @@ cd Light-Gun/Raspi-c
 mkdir -p build && cd build
 cmake ../
 cmake --build .
-./CamCalibrate         ## To calibrate the camera module and attain its distcoeff and camera matrix
-./ScreenCalibrate      ## To Calibrate the pose of the leds and map them with edges of display
+./CamCalibrate                    ## To calibrate the camera module and attain its distcoeff and camera matrix
+./ScreenCalibrate                 ## To Calibrate the pose of the leds and map them with edges of display
 echo "e9:eb:d6:a8:0b:af" >> .configDevice  ## Host devices bluetooth Address to connect.
-./LightGun             ## To run the Application
+./LightGun                        ## To run the Application
 ```
 #### Local Machine
 ``` bash
@@ -40,9 +40,10 @@ sudo apt-get install libx11-dev libx11tst-dev
 ### install autogui library for cmake.
 cmake ../
 cmake --build .
-./VMserver            ## This will launch the server on the local host
+./VMserver                        ## This will launch the server on the local host
 ```
 
+## Camera Calibrations
 ### Distortion and Transformation of the Camera
 Run the CamCalibrate application to get the Distortion and Transformation matrix of the camera and will store this into a file which can be reused accross all operations. You would need to have Checkerboard to configure this which is a little inconvenient but is a neccesary step. But one could approximate the same if and only if they dont have a lens attached to the camera which skewes ( You can look for the approximation in the Python scripts or visit the link in the main README).
 ### Auto white Balance, ISO and temperature control
@@ -79,4 +80,4 @@ And so on as one wants to implement these.
 
 The configuration should start working by now and should start responding to each button clicks.
 ### Point mapping
-Run the PointCalibration.cpp to get the mapping store do note have the camera as parallel to the screen as possible .
+Run the ScreenCalibrate application to get the mapping stored. do note that the camera must be parallel to the screen as much as possible.
