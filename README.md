@@ -16,7 +16,15 @@ This is not the main motive now
 ## Glimpse:
 This is the glimpse of the prototype made with Raspberry pi and a toy gun with all the proccessing done on the Raspberry and only transmites messages to the local server. The previous method of running the proccessing and the actions is documented in **Win-Py** directory.<br/>
 This is the basic parts of the hardware prototype.
-![Setup](https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/gun_setup.jpg)
+![Hardware-Setup](https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/gun_setup.jpg)
+
+This is the setup with IR-LEDs attached to the 4 ends which makes it very easy for detection in a wide range of lighting conditions.
+![Display-Setup](https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/display_setup.jpg)
+
+And after Installation ( [Raspi](https://github.com/hex-plex/Light-Gun/tree/master/Raspi-c) version or [Local](https://github.com/hex-plex/Light-Gun/tree/master/Win-py) version) the guide lines for using the same is also available in there respective folders.
+
+The Modules should then create a virtual mouse and start following the edge of your camera module.
+The following is a demonstration of its working.... (:sweat_smile: in a while i am fixing the deviation erros.)
 
 ## Reference:
 - This is for getting R and t matrix  https://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/

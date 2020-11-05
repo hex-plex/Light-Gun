@@ -39,5 +39,41 @@ If you change your hardware frequently then you can add these into ~/.profile or
 echo "v4l2-ctl --set-ctrl=white_balance_auto_preset=0" >> ~/.profile
 ```
 And so on as one wants to implement these.
+
+## Installation
+#### Raspberry Pi
+There are few dependencies that are neccesary for building the project.
+###### Pre Installation
+```bash
+Opencv
+Bluez
+WiringPi
+```
+###### Build Project
+``` bash
+git clone https://github.com/hex-plex/Light-Gun
+cd Light-Gun/Raspi-c
+mkdir -p build && cd build
+cmake ../
+cmake --build .
+./CamCalibrate         ## To calibrate the camera module and attain its distcoeff and camera matrix
+./ScreenCalibrate      ## To Calibrate the pose of the leds and map them with edges of display
+echo "e9:eb:d6:a8:0b:af" >> .configDevice  ## Host devices bluetooth Address to connect.
+./LightGun             ## To run the Application
+```
+#### Local Machine
+``` bash
+git clone https://github.com/hex-plex/Light-Gun
+cd Light-Gun/VMserver-c
+mkdir -p build && cd build
+### If Linux
+sudo apt-get install libx11-dev libx11tst-dev
+### or If windows
+### install autogui library for cmake.
+cmake ../
+cmake --build .
+./VMserver            ## This will launch the server on the local host
+```
+The configuration should start working by now and should start responding to each button clicks.
 ### Point mapping
 Run the PointCalibration.cpp to get the mapping store do note have the camera as parallel to the screen as possible .
