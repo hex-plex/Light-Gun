@@ -21,7 +21,7 @@ print(obj()) ## This display for how long the server been running
 ```
 One can change the example usage and use it directly for their use case
 and run the MainClass.py as I did
-![Setup](https://raw.githubusercontent.com/hex-plex/Light-Gun.apk/master/images/working_with_manual_scalling.jpg)
+![Setup](https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/working_with_manual_scalling.jpg)
 
 For Configuring the thresholding points that is the green cut outs in my case you can use the red thres to find the range
 and and then use PointConfig to configure them as follows
@@ -36,7 +36,7 @@ configFrame(frame)        ## Starting the configuration process
 After configuration the program while work once the scalling is set which would be in the next update
 
 **This is a demo of the program by putting a manual scalling to the cursor coordinates**
-![Working demo](https://raw.githubusercontent.com/hex-plex/Light-Gun.apk/master/images/working_with_manual_scalling2.jpg)
+![Working demo](https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/working_with_manual_scalling2.jpg)
 
 ## **The code may not work as expected hence I suggest using the Raspi-c folder.**
 

@@ -16,7 +16,7 @@ This is not the main motive now
 ## Glimpse:
 This is the glimpse of the prototype made with Raspberry pi and a toy gun with all the proccessing done on the Raspberry and only transmites messages to the local server. The previous method of running the proccessing and the actions is documented in **Win-Py** directory.<br/>
 This is the basic parts of the hardware prototype.
-![Setup](https://raw.githubusercontent.com/hex-plex/Light-Gun.apk/master/images/gun_setup.jpg)
+![Setup](https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/gun_setup.jpg)
 
 ## Reference:
 - This is for getting R and t matrix  https://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/
