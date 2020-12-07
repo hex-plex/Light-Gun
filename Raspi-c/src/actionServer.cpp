@@ -16,8 +16,9 @@ int setupSwitch(vector<void (*)(void)> &cal){
     pinMode(1, INPUT);
     pinMode(4, INPUT);
     digitalWrite(4, LOW);
-    wiringPiISR(1,INT_EDGE_BOTH,switchDown);
+    wiringPiISR(1,INT_EDGE_BOTH, switchDown);
     wiringPiISR(4,INT_EDGE_RISING, shutdown);
+    wiringPiISR(4,INT_EDGE_FALLING, poweron);
     while(1){
         delay(10000);
     }
@@ -47,3 +48,4 @@ void poweron(void){
         prevTogl = millis();
     }
 }
+
