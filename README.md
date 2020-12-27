@@ -5,6 +5,8 @@ Bored in the quarantined period revisiting my old video games with light gun ins
 **Raspi-c is the main working directory for now.**<br/><br/>
 **The Explanation for the working can be found in EXPLANATION.md**
 
+[**Demo Link**](https://drive.google.com/file/d/1hIYBv8l2JCylOfQS9Cc5D5Hp50Ui55D-/view?usp=sharing)
+
 ## Contribution
 Any kind of Contribution is always welcomed. The rules for any Contribution for now is vague as I have not really structurized the project so well as mostly in its developmental period, So its prone to some nasty errors(Anyways feel free to report it :smile: ), Any Idea for a better implementation is also welcome.
 
