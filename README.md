@@ -14,10 +14,14 @@ This is the glimpse of the prototype made with Raspberry pi and a toy gun with a
 <img src="https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/Complete_setup.jpg" width="400" align="right" border="20"></img>
 <br/><br/><br/><br/><br/><br/>This is an prototype of the light gun with a camera module attached to a toy-gun and with a Raspberry pi 3 b+ (unneccessary I know) and a 7.4 V li-ion battery with a buck converter to which two switches are connected on the interrupt pins.<hr/>
 
-<br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 <img src="https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/display_setup.jpg" width="400" align="left"></img>
 <br/><br/><br/><br/>
-This is the setup with IR-LEDs attached to the 4 ends which makes it very easy for detection in a wide range of lighting conditions.<hr/><br/>
+This is the setup with IR-LEDs attached to the 4 ends which makes it very easy for detection in a wide range of lighting conditions.<hr/><br/><br/><br/><br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+
 And after Installation ( [Raspi](https://github.com/hex-plex/Light-Gun/tree/master/Raspi-c) version or [Local](https://github.com/hex-plex/Light-Gun/tree/master/Win-py) version) the guide lines for using the same is also available in there respective folders.
 
 The Modules should then create a virtual mouse and start following the edge of your camera module.
