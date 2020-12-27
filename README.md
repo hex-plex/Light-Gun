@@ -4,19 +4,14 @@
 Bored in the quarantined period revisiting my old video games with light gun inspired an idea of light gun in LCD monitors , I went on building it mainly as a android package as it would be accessable to anyone. Then ended up using a Raspberry Pi as a standalone device to enable its use accross many platforms and devices.<br/>
 **Raspi-c is the main working directory for now.**<br/><br/>
 **The Explanation for the working can be found in EXPLANATION.md**
+
 ## Contribution
 Any kind of Contribution is always welcomed. The rules for any Contribution for now is vague as I have not really structurized the project so well as mostly in its developmental period, So its prone to some nasty errors(Anyways feel free to report it :smile: ), Any Idea for a better implementation is also welcome.
-## ToDo:
-- Put a camera module in a toy gun to get the feed from there. (for now i used my phones camera module in demo)
-- Devise a method to convert the HSV color space into a grayscale which measures how close is it to the color of the leds in ideal condition. This is very useful in adaptive thresholding.
-- Work out the problems with **Hardware Interrupts** and make a communication protocol between the Pi and the Computer.
-- ><del>Convert the code into java based android package for any one to use.</del><br/>
-This is not the main motive now
 
 ## Glimpse:
 This is the glimpse of the prototype made with Raspberry pi and a toy gun with all the proccessing done on the Raspberry and only transmites messages to the local server. The previous method of running the proccessing and the actions is documented in **Win-Py** directory.<br/>
 This is the basic parts of the hardware prototype.
-![Hardware-Setup](https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/gun_setup.jpg)
+![Hardware-Setup](https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/Complete_setup.jpg)
 
 This is the setup with IR-LEDs attached to the 4 ends which makes it very easy for detection in a wide range of lighting conditions.
 ![Display-Setup](https://raw.githubusercontent.com/hex-plex/Light-Gun/master/images/display_setup.jpg)
