@@ -8,18 +8,23 @@
 #include <sys/socket.h>
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/rfcomm.h>
-//#include "actionServer.cpp"
+#include "actionServer.cpp"
 int main(){
-	std::cout<<"asdfasdfasdff";
+	//std::cout<<"asdfasdfasdff";
 	std::string baddr;
 	std::ifstream myfile("../.configDevice");
 	if(myfile.is_open()){
-		getline(myfile,line);
+		getline(myfile,baddr);
 	}
 	else{
 		std::cout<<"Bluetooth address config not found read manual to set it up\n";
 		return -1;
 	}
-    
+    actionServer::init(pair_socket);
+    return 0;
+}
+
+int pair_socket(){
+
     return 0;
 }
