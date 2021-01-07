@@ -13,8 +13,10 @@ int main(int argc, char** argv){
     addr.rc_channel = (uint8_t) 1;
     str2ba(dest, &addr.rc_bdaddr);
     status = connect(s , (struct sockaddr*)&addr, sizeof(addr));
+    char txt[] = "hello0";
     while(status>=0){
-        status = write(s,"hello!",6);
+        status = write(s,txt,6);
+        txt[5]++;
         usleep(100*__ms);
         printf("%d", status);
     }

@@ -17,18 +17,21 @@ int main(int argc, char** argv){
     bind(s,(struct sockaddr *)&loc_addr, sizeof(loc_addr));
     listen(s,1);
     client = accept(s,(struct sockaddr *)&rem_addr,&opt);
-
+    ba2str(&rem_addr.rc_bdaddr,buf);
+    fprintf(stderr,"accepted connection from %s\n",buf);
     while(true){
-        ba2str(&rem_addr.rc_bdaddr,buf);
-        fprintf(stderr,"accepted connection from %s\n",buf);
         memset(buf,0,sizeof(buf));
-
         bytes_read = read(client,buf,sizeof(buf));
         if(bytes_read>0){
+            if(buf[0]==-1)break;
+
             printf("received [%s]\n",buf);
+        } else {
+            break;
         }
-        //close(client);
+
     }
+    close(client);
     close(s);
     return 0;
 }
