@@ -3,7 +3,7 @@
 #include <sys/socket.h>
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/rfcomm.h>
-
+#define __ms 1000
 int main(int argc, char** argv){
     struct sockaddr_rc addr = {0};
     int s,status;
@@ -13,8 +13,10 @@ int main(int argc, char** argv){
     addr.rc_channel = (uint8_t) 1;
     str2ba(dest, &addr.rc_bdaddr);
     status = connect(s , (struct sockaddr*)&addr, sizeof(addr));
-    if(status==0){
+    while(status>=0){
         status = write(s,"hello!",6);
+        usleep(100*__ms);
+        printf("%d", status);
     }
     if(status<0)perror("uh oh!");
     close(s);
