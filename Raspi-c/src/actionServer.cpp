@@ -7,7 +7,7 @@ namespace actionServer{
     int status = 0;
     int ctr = 0;
     int flag = 0;
-    unsigned int prevTrig  = millis();
+    unsigned unsigned int prevTrig  = millis();
     unsigned int prevTogl  = millis();
     vector< void (*)(void) > callbacks;
     void switchDown(void);
@@ -52,5 +52,8 @@ namespace actionServer{
 
     void init(void (*)(void) f){
         return;
+    }
+    void button_set(void (*)(void) f){
+    	return;
     }
 }
