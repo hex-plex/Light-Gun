@@ -10,9 +10,8 @@
 #include <bluetooth/rfcomm.h>
 #include "actionServer.cpp"
 int main(){
-	//std::cout<<"asdfasdfasdff";
 	std::string baddr;
-	std::ifstream myfile("../.configDevice");
+	std::ifstream myfile("../.configDevice");  //remove ../ please
 	if(myfile.is_open()){
 		getline(myfile,baddr);
 	}
@@ -21,10 +20,17 @@ int main(){
 		return -1;
 	}
     actionServer::init(pair_socket);
+    actionServer::button_set(compute);
+    while(actionServer::ok()){
+        actionServer::fetch();
+    }
     return 0;
 }
 
-int pair_socket(){
+void pair_socket(){
+    return;
+}
 
-    return 0;
+void compute(int* mouse_coor){
+    return;
 }

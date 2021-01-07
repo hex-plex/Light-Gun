@@ -17,7 +17,7 @@ int main(int argc, char** argv){
     while(status>=0){
         status = write(s,txt,6);
         txt[5]++;
-        usleep(100*__ms);
+        usleep(3000*__ms);
         printf("%d", status);
     }
     if(status<0)perror("uh oh!");
