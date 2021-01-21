@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+/home/hexplex0xff/light-gun/Raspi-c/src/actionServer.cpp
+unistd.h
+-
+iostream
+-
+cstdlib
+-
+signal.h
+-
+vector
+-
+
 /home/hexplex0xff/light-gun/Raspi-c/src/main.cpp
 opencv2/highgui.hpp
 -
@@ -27,6 +39,8 @@ bluetooth/bluetooth.h
 -
 bluetooth/rfcomm.h
 -
+actionServer.cpp
+/home/hexplex0xff/light-gun/Raspi-c/src/actionServer.cpp
 
 /usr/local/include/opencv4/opencv2/core.hpp
 opencv2/core/cvdef.h

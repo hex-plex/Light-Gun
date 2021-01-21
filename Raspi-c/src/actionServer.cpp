@@ -1,19 +1,33 @@
+#include <unistd.h>
 #include <iostream>
 #include <wiringPi.h>
-
+#include <cstdlib>
+#include <signal.h>
+#include <vector>
 namespace actionServer{
 
     void shutdown(void);
     bool ok(void);
     void fetch(void);
+    void signal_callback_handler(int signum);
     int status = 0;
     int ctr = 0;
     int flag = 0;
-    unsigned unsigned int prevTrig  = millis();
+    //int millis(){return 1;}
+    //int digitalRead(int a){return 0;}
+    //int digitalWrite(int a){return 0;}
+    //int HIGH=0,LOW=1;
+    unsigned int prevTrig  = millis();
     unsigned int prevTogl  = millis();
-    vector< void (*)(void) > callbacks;
+    std::vector< void (*)(void) > callbacks;
     void switchDown(void);
-    int setupSwitch(vector<void (*)(void)> &cal){
+
+    void signal_callback_handler(int signum){
+        std::cout<<"Shutting down the server ... .. .\n";
+        status = -1;
+    }
+    
+    int setupSwitch(std::vector<void (*)(void)> &cal){
         wiringPiSetup();
         callbacks = cal;
         pinMode(1, INPUT);
@@ -51,16 +65,19 @@ namespace actionServer{
             prevTogl = millis();
         }
     }
-
-    void init(void (*)(void) f){
-        return;
+    
+    void init(void (*f)(void)){
+        signal(SIGINT, signal_callback_handler);
     }
-    void button_set(void (*)(void) f){
+    void button_set(void (*f)(int* coor)){
     	return;
     }
     
     bool ok(void){
-        return true;
+        if (status==-1)
+            return false;
+        else
+            return true;
     }
     
     void fetch(void){
