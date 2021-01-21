@@ -1,0 +1,6 @@
+add_executable(LightGun src/main.cpp)
+target_link_libraries(LightGun ${OpenCV_LIBS})
+add_executable(CamCalibrate src/cameraCalibrationOnce.cpp)
+target_link_libraries(CamCalibrate ${OpenCV_LIBS})
+add_executable(ScreenCalibrate src/PointCalibration.cpp)
+target_link_libraries(ScreenCalibrate ${OpenCV_LIBS})

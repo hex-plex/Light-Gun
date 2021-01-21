@@ -14,8 +14,7 @@ int main(){
 	std::ifstream myfile("../.configDevice");  //remove ../ please
 	if(myfile.is_open()){
 		getline(myfile,baddr);
-	}
-	else{
+	}else{
 		std::cout<<"Bluetooth address config not found read manual to set it up\n";
 		return -1;
 	}
