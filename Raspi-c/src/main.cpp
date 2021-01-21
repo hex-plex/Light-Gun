@@ -17,7 +17,7 @@ int main(){
 	}else{
 		std::cout<<"Bluetooth address config not found read manual to set it up\n";
 		return -1;
-	}
+    }  
     /*actionServer::init(pair_socket);
     actionServer::button_set(compute);
     while(actionServer::ok()){

@@ -4,6 +4,8 @@
 namespace actionServer{
 
     void shutdown(void);
+    bool ok(void);
+    void fetch(void);
     int status = 0;
     int ctr = 0;
     int flag = 0;
@@ -56,4 +58,13 @@ namespace actionServer{
     void button_set(void (*)(void) f){
     	return;
     }
+    
+    bool ok(void){
+        return true;
+    }
+    
+    void fetch(void){
+        return ;
+    }
+
 }
