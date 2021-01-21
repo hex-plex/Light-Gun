@@ -1,0 +1,7 @@
+/home/hexplex0xff/light-gun/Raspi-c/build/CMakeFiles/rebuild_cache.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/CMakeFiles/edit_cache.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/rebuild_cache.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/LightGun.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/edit_cache.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/ScreenCalibrate.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/CamCalibrate.dir
