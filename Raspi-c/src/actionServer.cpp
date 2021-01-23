@@ -7,16 +7,14 @@
 namespace actionServer{
 
     void shutdown(void);
+    void switchDown(void);
+    void poweron(void);
     bool ok(void);
     void fetch(void);
     void signal_callback_handler(int signum);
     int status = 0;
     int ctr = 0;
     int flag = 0;
-    //int millis(){return 1;}
-    //int digitalRead(int a){return 0;}
-    //int digitalWrite(int a){return 0;}
-    //int HIGH=0,LOW=1;
     unsigned int prevTrig  = millis();
     unsigned int prevTogl  = millis();
     std::vector< void (*)(void) > callbacks;

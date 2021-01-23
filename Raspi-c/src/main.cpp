@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/socket.h>
+#include <thread>
+#include <chrono>
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/rfcomm.h>
 #include "actionServer.cpp"
@@ -24,6 +26,7 @@ int main(int argc, char** argv){
     actionServer::button_set(compute);          // This should make all the interrupts ready
     while(actionServer::ok()){                  // Checks if there is no exit command inputted
         actionServer::fetch();                  // Like a spinlock to complete due tasks.
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
     
     return 0;
