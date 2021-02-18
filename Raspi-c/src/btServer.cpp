@@ -18,6 +18,20 @@ class Gun{
 };
 
 Gun::Gun(){
-	Hello;
-	Bye;
+    this->s=-1;
+    this->status=-1;
+}
+Gun::Gun(char* dst){
+    strcpy(this->dest,dst);
+    this->s = socket(AF_BLUETOOTH, SOCK_STREAM, BTPROTO_RFCOMM);
+    this->addr.rc_family = AF_BLUETOOTH;
+    this->addr.rc_channel = (uint8_t) 1;
+    str2ba(this->dest, &this->addr.rc_bdaddr);
+    this->status = connect(this->s, (struct sockaddr*)&this->addr, sizeof(addr));
+}
+
+Gun::send(int x, int y){
+    if(this->get_status()>=0){
+        
+    }
 }
