@@ -4,15 +4,18 @@
 #include <fstream>
 #include <string>
 #include <stdio.h>
-#include <unistd.h>
+#include <unistd.h> 
 #include <sys/socket.h>
 #include <thread>
 #include <chrono>
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/rfcomm.h>
 #include "actionServer.cpp"
+#include "btServer.cpp"
+
 void pair_socket(void);
 void compute(int* mouse_coor);
+
 int main(int argc, char** argv){
 	std::string baddr;
 	std::ifstream myfile("../.configDevice");  //remove ../ please
@@ -22,7 +25,7 @@ int main(int argc, char** argv){
 		std::cout<<"Bluetooth address config not found read manual to set it up\n";
 		return -1;
     }
-    actionServer::init(pair_socket);            // This should make all the connections ready
+    Gun a = actionServer::init(pair_socket);            // This should make all the connections ready
     actionServer::button_set(compute);          // This should make all the interrupts ready
     while(actionServer::ok()){                  // Checks if there is no exit command inputted
         actionServer::fetch();                  // Like a spinlock to complete due tasks.
@@ -32,7 +35,8 @@ int main(int argc, char** argv){
     return 0;
 }
 
-void pair_socket(){
+void pair_socket(char* dest, Gun* gun){
+    gun = Gun(dest);
     return;
 }
 

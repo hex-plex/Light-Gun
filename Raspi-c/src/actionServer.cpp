@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <signal.h>
 #include <vector>
+#include <cstring>
+
 namespace actionServer{
 
     void shutdown(void);
@@ -64,8 +66,11 @@ namespace actionServer{
         }
     }
     
-    void init(void (*f)(void)){
+    void init(void (*f)(void), std::string baddr, Gun& gun){
         signal(SIGINT, signal_callback_handler);
+        char dest[18];
+        strcpy(dest, baddr.c_str());
+        gun = f(dest);
     }
     void button_set(void (*f)(int* coor)){
     	return;
