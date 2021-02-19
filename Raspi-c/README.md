@@ -81,3 +81,12 @@ And so on as one wants to implement these.
 The configuration should start working by now and should start responding to each button clicks.
 ### Point mapping
 Run the ScreenCalibrate application to get the mapping stored. do note that the camera must be parallel to the screen as much as possible.
+#### Step 1:
+Keep The camera asmuch parallel to the display with LED array. And get the Corner points detected like so.
+![Corner points](raspi-feed/Desktop/2020-10-19-024653_1920x1080_scrot.png?raw=True)
+#### Step 2:
+For the same frame Crop or select The Region of Interest that is select The region which would only contain the Display and not the border to increase accuracy of the pointer. Like so.
+![Region Of Interest](raspi-feed/Desktop/2020-10-19-024724_1920x1080_scrot.png?raw=True)
+#### Step 3:
+These previous steps should generate a ```refpoints.yaml``` file which contains the decription about your setup. This is the same output.
+![Output](raspi-feed/Desktop/2020-10-19-025031_1920x1080_scrot.png)
