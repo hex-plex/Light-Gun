@@ -2,7 +2,7 @@
 
 ## This is to create a light gun using Opencv and camera module
 Bored in the quarantine period, revisiting my old video games with light gun inspired an idea of light gun with a LCD display , I went on to build it mainly as a android package as it would be more accessable to anyone. Then ended up using a Raspberry Pi as a standalone device to enable it's use accross many platforms and devices.<br/>
-[**Raspi-c is the main working directory for now.**](Raspi-c)<br/><br/>
+<p align="center"><h2>[**Raspi-c is the main working directory for now.**](Raspi-c)</h2></p><br/><br/>
 **The Explanation for the working can be found in EXPLANATION.md**
 
 ## Glimpse:
