@@ -23,7 +23,6 @@ And after Installation the main code using [Raspi](https://github.com/hex-plex/L
 The Modules then should create a virtual mouse and start following the edge vector of the camera module.
 The following is a demonstration of it in action.... (:sweat_smile: coming up shortly, as I am fixing few deviation errors.)
 
-[**Demo Link**](https://drive.google.com/file/d/1hIYBv8l2JCylOfQS9Cc5D5Hp50Ui55D-/view?usp=sharing)
 
 ## Contribution
 Any kind of Contribution is always welcomed. The rules for any Contribution for now is Non existent as I am the only one working on it and I have not really structurized the project so well as mostly in its prototyping stage, So its not possible to do a lot(Anyways feel free to report any errors or bugs :smile: ), Any Idea for a better implementation is also welcomed.
