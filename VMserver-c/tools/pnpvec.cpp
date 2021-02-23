@@ -32,10 +32,11 @@ int main(int argc, char **argv){
     cv::Mat rotation_vector;
     cv::Mat translation_vector;
 
-    cv::solvePnP(model_points, image_points, camera_matrix, dist_coeffs, rotation_vector, translation_vector, false, SOLVEPNP_ITERATIVE);
+    cv::solvePnP(model_points, image_points, camera_matrix, dist_coeffs, rotation_vector, translation_vector);
 
     vector<Point3d> nose_end_point3D;
     vector<Point2d> nose_end_point2D;
+    nose_end_point3D.push_back(Point3d(0,0,1000.0));
 
     projectPoints(nose_end_point3D, rotation_vector, translation_vector, camera_matrix, dist_coeffs, nose_end_point2D);
 
