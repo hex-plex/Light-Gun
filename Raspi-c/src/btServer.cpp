@@ -32,6 +32,18 @@ Gun::Gun(char* dst){
 
 Gun::send(int x, int y){
     if(this->get_status()>=0){
-        
+        char tempx[5];
+        char tempy[5];
+        int tx=x,ty=y;
+        for(int i=4;i>=0;i--){
+            tempx[i] = tx%10 + 48 ; 
+            tempy[i] = ty%10 + 48 ;
+            tx/=10;
+            ty/=10;
+        }
+        char msg[14];
+        std::sprintf(msg, "!%s&%s@", tempx, tempy);
+        this->status = write(this->s,msg,13);
+        delete tempx,tempy,msg,tx,ty;
     }
 }
