@@ -55,14 +55,18 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     cv::Mat gray;
     cv::cvtColor(img,gray,cv::COLOR_BGR2GRAY);
     gray = 255 - gray;
+    
+    cv::imshow("gray",gray);
+    cv::waitKey(0);
+    
     cv::SimpleBlobDetector::Params params;
-    params.minThreshold = 30;
-    params.maxThreshold = 100;
+    params.minThreshold = 0;
+    params.maxThreshold = 125;
     params.filterByCircularity = true ;
-    params.minCircularity = 0.75;
+    params.minCircularity = 0.85;
     params.filterByArea = true;
     params.minArea = 5;
-    params.maxArea = 30;
+    params.maxArea = 3000;
     params.filterByConvexity = false;
     params.filterByInertia = false;
     cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
@@ -79,7 +83,7 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     cv::Point2f diag = maxx-minn;
     DiagL = dst(diag,refer);
     std::sort(all(keypoints),condition);
-    for(int i=0;i<4;i++){
+    for(int i=0;i<std::min(4,(int)keypoints.size());i++){
         Final.push_back(keypoints.at(i).pt);
     }
     /*

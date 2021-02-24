@@ -49,6 +49,7 @@ bool condition(const cv::KeyPoint &a,const cv::KeyPoint &b){
 bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     RES[0]=res[0];
     RES[1]=res[1];
+    DiagL = sqrt((RES[0]*RES[0] + RES[1]*RES[1]));
     /*
     fill in the adaptive thresholding part
     */
