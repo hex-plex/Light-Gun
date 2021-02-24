@@ -57,7 +57,7 @@ int main(int argc, char **argv){
     
     while(true){
         cap>>im;
-        if(!thresh(im, image_points, false, res ))continue;
+        if(!thresh(im, image_points, true, res ))continue;
 
         cv::Mat rotation_vector;
         cv::Mat translation_vector;

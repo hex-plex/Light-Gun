@@ -49,7 +49,6 @@ bool condition(const cv::KeyPoint &a,const cv::KeyPoint &b){
 bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     RES[0]=res[0];
     RES[1]=res[1];
-    DiagL = sqrt((RES[0]*RES[0] + RES[1]*RES[1]));
     /*
     fill in the adaptive thresholding part
     */
@@ -125,6 +124,14 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     if(flag){
         cv::Mat dat = img.clone();
         for(int i=0;i<4;i++){
+            cv::putText(dat,
+                        std::to_string(i),
+                        Final.at(i),
+                        cv::FONT_HERSHEY_DUPLEX,
+                        5,
+                        cv::Scalar(255,0,0),
+                        5
+            );
             cv::circle(dat,cv::Point((int)Final.at(i).x,(int)Final.at(i).y),10,cv::Scalar(255,0,0),-1,8,0);
         }
         cv::imshow("Instance",dat);

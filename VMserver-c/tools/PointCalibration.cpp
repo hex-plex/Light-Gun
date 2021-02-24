@@ -32,6 +32,13 @@ int configPoints(cv::VideoCapture &cap){
         std::cout<<"Select a rectangle which defines the inner part of the display the best\n";
         cv::Rect r = cv::selectROI(image);
         rad.pntrvec.clear();
+        cv::Point2d mid(0,0);
+        for(int i=0;i<4;i++){
+            mid.x += imgpoints.at(i).x;
+            mid.y += imgpoints.at(i).y;
+        }
+        mid.x/=4;
+        mid.y/=4;
         for(int i=0;i<imgpoints.size();i++){
             rad.pntrvec.push_back(cv::Point3d(imgpoints.at(i).x,imgpoints.at(i).y,10));
         }
