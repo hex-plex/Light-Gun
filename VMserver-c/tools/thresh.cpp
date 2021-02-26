@@ -41,8 +41,8 @@ cv::Point2f average(std::vector<cv::Point2f> &cm){
 }
 
 bool condition(const cv::KeyPoint &a,const cv::KeyPoint &b){
-    if(a.pt.y-b.pt.y>=0.2*DiagL){return false;}
-    else if(a.pt.x - b.pt.x>=0.3*DiagL){return false;}
+    if(a.pt.y-b.pt.y>=0.5*DiagL){return false;}
+    else if(a.pt.x - b.pt.x>=0.5*DiagL){return false;}
     else return true;
 }
 
