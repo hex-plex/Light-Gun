@@ -6,6 +6,8 @@
 #include <opencv2/core/persistence.hpp>
 #include <iostream>
 #include <stdio.h>
+
+
 struct CV_EXPORTS CameraParams
 {
     cv::Mat cameraMatrix;

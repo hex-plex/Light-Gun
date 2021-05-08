@@ -1,10 +1,13 @@
 #include <unistd.h>
 #include <iostream>
-#include <wiringPi.h>
 #include <cstdlib>
 #include <signal.h>
 #include <vector>
 #include <cstring>
+
+#ifdef __arm__
+#include <wiringPi.h>
+#endif
 
 namespace actionServer{
 
@@ -26,7 +29,7 @@ namespace actionServer{
         std::cout<<"Shutting down the server ... .. .\n";
         status = -1;
     }
-    
+#ifdef __arm__
     int setupSwitch(std::vector<void (*)(void)> &cal){
         wiringPiSetup();
         callbacks = cal;
@@ -75,7 +78,7 @@ namespace actionServer{
     void button_set(void (*f)(int* coor)){
     	return;
     }
-    
+#endif
     bool ok(void){
         if (status==-1)
             return false;

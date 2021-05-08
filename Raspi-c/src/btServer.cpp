@@ -6,8 +6,8 @@
 
 class Gun{
     public:
-        void Gun();
-        void Gun(char* dst);
+        Gun();
+        Gun(char* dst);
         int send(int x, int y);
         int get_status();
         int stop();

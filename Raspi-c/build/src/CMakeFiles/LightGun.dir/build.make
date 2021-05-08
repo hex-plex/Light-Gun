@@ -60,15 +60,15 @@ include src/CMakeFiles/LightGun.dir/flags.make
 src/CMakeFiles/LightGun.dir/main.cpp.o: src/CMakeFiles/LightGun.dir/flags.make
 src/CMakeFiles/LightGun.dir/main.cpp.o: ../src/main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hexplex0xff/light-gun/Raspi-c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/LightGun.dir/main.cpp.o"
-	cd /home/hexplex0xff/light-gun/Raspi-c/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LightGun.dir/main.cpp.o -c /home/hexplex0xff/light-gun/Raspi-c/src/main.cpp
+	cd /home/hexplex0xff/light-gun/Raspi-c/build/src && /usr/lib/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/LightGun.dir/main.cpp.o -c /home/hexplex0xff/light-gun/Raspi-c/src/main.cpp
 
 src/CMakeFiles/LightGun.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/LightGun.dir/main.cpp.i"
-	cd /home/hexplex0xff/light-gun/Raspi-c/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hexplex0xff/light-gun/Raspi-c/src/main.cpp > CMakeFiles/LightGun.dir/main.cpp.i
+	cd /home/hexplex0xff/light-gun/Raspi-c/build/src && /usr/lib/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hexplex0xff/light-gun/Raspi-c/src/main.cpp > CMakeFiles/LightGun.dir/main.cpp.i
 
 src/CMakeFiles/LightGun.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/LightGun.dir/main.cpp.s"
-	cd /home/hexplex0xff/light-gun/Raspi-c/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hexplex0xff/light-gun/Raspi-c/src/main.cpp -o CMakeFiles/LightGun.dir/main.cpp.s
+	cd /home/hexplex0xff/light-gun/Raspi-c/build/src && /usr/lib/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hexplex0xff/light-gun/Raspi-c/src/main.cpp -o CMakeFiles/LightGun.dir/main.cpp.s
 
 src/CMakeFiles/LightGun.dir/main.cpp.o.requires:
 

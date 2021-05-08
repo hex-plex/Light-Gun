@@ -3,6 +3,7 @@
 
 src/CMakeFiles/LightGun.dir/main.cpp.o
  /home/hexplex0xff/light-gun/Raspi-c/src/actionServer.cpp
+ /home/hexplex0xff/light-gun/Raspi-c/src/btServer.cpp
  /home/hexplex0xff/light-gun/Raspi-c/src/main.cpp
  /usr/local/include/opencv4/opencv2/core.hpp
  /usr/local/include/opencv4/opencv2/core/base.hpp

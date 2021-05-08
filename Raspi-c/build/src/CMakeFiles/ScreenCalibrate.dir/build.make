@@ -60,15 +60,15 @@ include src/CMakeFiles/ScreenCalibrate.dir/flags.make
 src/CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.o: src/CMakeFiles/ScreenCalibrate.dir/flags.make
 src/CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.o: ../src/PointCalibration.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hexplex0xff/light-gun/Raspi-c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.o"
-	cd /home/hexplex0xff/light-gun/Raspi-c/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.o -c /home/hexplex0xff/light-gun/Raspi-c/src/PointCalibration.cpp
+	cd /home/hexplex0xff/light-gun/Raspi-c/build/src && /usr/lib/ccache/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.o -c /home/hexplex0xff/light-gun/Raspi-c/src/PointCalibration.cpp
 
 src/CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.i"
-	cd /home/hexplex0xff/light-gun/Raspi-c/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hexplex0xff/light-gun/Raspi-c/src/PointCalibration.cpp > CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.i
+	cd /home/hexplex0xff/light-gun/Raspi-c/build/src && /usr/lib/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hexplex0xff/light-gun/Raspi-c/src/PointCalibration.cpp > CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.i
 
 src/CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.s"
-	cd /home/hexplex0xff/light-gun/Raspi-c/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hexplex0xff/light-gun/Raspi-c/src/PointCalibration.cpp -o CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.s
+	cd /home/hexplex0xff/light-gun/Raspi-c/build/src && /usr/lib/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hexplex0xff/light-gun/Raspi-c/src/PointCalibration.cpp -o CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.s
 
 src/CMakeFiles/ScreenCalibrate.dir/PointCalibration.cpp.o.requires:
 

@@ -1,4 +1,6 @@
 #include<iostream>
+
+#ifdef __arm__
 #include<wiringPi.h>
 
 using namespace std;
@@ -21,4 +23,9 @@ void shutdown(void){
         prevTime=millis();
         cout<<"Shutting Down ... .. .\n";
     }
+}
+#else
+int main(){
+    std::cout<<"No GPIOs detected\n";
+    return 0;
 }
