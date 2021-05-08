@@ -37,7 +37,7 @@ int main(int argc, char** argv){
 }
 
 void pair_socket(char* dest, Gun* gun){
-    gun = Gun(dest);
+    Gun gun(dest);
     return;
 }
 
