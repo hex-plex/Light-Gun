@@ -13,6 +13,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opencv"
   "/opencv2"
   "/opencv4"
+  "../include"
   "/usr/local/include/opencv4"
   )
 

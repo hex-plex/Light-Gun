@@ -20,8 +20,7 @@ struct CV_EXPORTS CameraParams
     const CameraParams& operator=(const CameraParams& other);
 };
 
-int trialWrite();
-int trialRead();
+
 
 struct CV_EXPORTS PointSet {
     std::vector<cv::Point3d> pntrvec = std::vector<cv::Point3d>( 4 , cv::Point3d(0.0f,0.0f,0.0f));
@@ -31,4 +30,13 @@ struct CV_EXPORTS PointSet {
     PointSet(std::vector<cv::Point2d> &a, std::vector<cv::Point3d> &b):pntrvec(b),cnrvec(a){};
 };
 
+
+bool operator>>(CameraParams &a, cv::FileStorage &fs);
+bool operator>>(cv::FileStorage &fs,CameraParams &a);
+bool operator>>(const PointSet &a, cv::FileStorage &fs);
+bool operator>>(cv::FileStorage &fs,PointSet &a);
+
 int trialofReadWrite();
+
+int trialWrite();
+int trialRead();

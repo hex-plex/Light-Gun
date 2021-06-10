@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/hexplex0xff/light-gun/Raspi-c/src/actionServer.cpp
+../include/LightGun/actionServer.h
 unistd.h
 -
 iostream
@@ -22,7 +22,7 @@ cstring
 wiringPi.h
 -
 
-/home/hexplex0xff/light-gun/Raspi-c/src/btServer.cpp
+../include/LightGun/btServer.h
 stdio.h
 -
 unistd.h
@@ -32,6 +32,14 @@ sys/socket.h
 bluetooth/bluetooth.h
 -
 bluetooth/rfcomm.h
+-
+
+/home/hexplex0xff/light-gun/Raspi-c/src/actionServer.cpp
+LightGun/actionServer.h
+-
+
+/home/hexplex0xff/light-gun/Raspi-c/src/btServer.cpp
+LightGun/btServer.h
 -
 
 /home/hexplex0xff/light-gun/Raspi-c/src/main.cpp

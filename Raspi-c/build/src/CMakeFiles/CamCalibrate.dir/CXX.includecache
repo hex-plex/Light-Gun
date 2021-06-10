@@ -6,6 +6,24 @@
 
 #IncludeRegexTransform: 
 
+../include/LightGun/cameraData.h
+opencv2/opencv.hpp
+-
+opencv2/core.hpp
+-
+opencv2/imgproc.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+opencv2/core/cvstd.hpp
+-
+opencv2/core/persistence.hpp
+-
+iostream
+-
+stdio.h
+-
+
 /home/hexplex0xff/light-gun/Raspi-c/src/cameraCalibrationOnce.cpp
 opencv2/opencv.hpp
 -
@@ -25,21 +43,7 @@ cameraData.cpp
 /home/hexplex0xff/light-gun/Raspi-c/src/cameraData.cpp
 
 /home/hexplex0xff/light-gun/Raspi-c/src/cameraData.cpp
-opencv2/opencv.hpp
--
-opencv2/core.hpp
--
-opencv2/imgproc.hpp
--
-opencv2/highgui/highgui.hpp
--
-opencv2/core/cvstd.hpp
--
-opencv2/core/persistence.hpp
--
-iostream
--
-stdio.h
+LightGun/cameraData.h
 -
 
 /usr/local/include/opencv4/opencv2/calib3d.hpp

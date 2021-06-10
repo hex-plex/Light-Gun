@@ -1,6 +1,6 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
-#include "cameraData.cpp"
+#include <LightGun/cameraData.h>
 #define all(c) c.start(),c.end()
 
 

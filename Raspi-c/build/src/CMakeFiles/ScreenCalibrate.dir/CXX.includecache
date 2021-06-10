@@ -6,17 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/hexplex0xff/light-gun/Raspi-c/src/PointCalibration.cpp
-opencv2/opencv.hpp
--
-opencv2/tracking.hpp
--
-cameraData.cpp
-/home/hexplex0xff/light-gun/Raspi-c/src/cameraData.cpp
-thresh.cpp
-/home/hexplex0xff/light-gun/Raspi-c/src/thresh.cpp
-
-/home/hexplex0xff/light-gun/Raspi-c/src/cameraData.cpp
+../include/LightGun/cameraData.h
 opencv2/opencv.hpp
 -
 opencv2/core.hpp
@@ -33,6 +23,16 @@ iostream
 -
 stdio.h
 -
+
+/home/hexplex0xff/light-gun/Raspi-c/src/PointCalibration.cpp
+opencv2/opencv.hpp
+-
+opencv2/tracking.hpp
+-
+LightGun/cameraData.h
+-
+thresh.cpp
+/home/hexplex0xff/light-gun/Raspi-c/src/thresh.cpp
 
 /home/hexplex0xff/light-gun/Raspi-c/src/thresh.cpp
 opencv2/opencv.hpp

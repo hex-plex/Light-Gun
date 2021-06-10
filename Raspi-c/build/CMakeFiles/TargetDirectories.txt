@@ -1,15 +1,15 @@
-<<<<<<< HEAD
-/home/pi/Light-Gun/Raspi-c/build/CMakeFiles/rebuild_cache.dir
-/home/pi/Light-Gun/Raspi-c/build/CMakeFiles/LightGun.dir
-/home/pi/Light-Gun/Raspi-c/build/CMakeFiles/edit_cache.dir
-/home/pi/Light-Gun/Raspi-c/build/CMakeFiles/ScreenCalibrate.dir
-/home/pi/Light-Gun/Raspi-c/build/CMakeFiles/CamCalibrate.dir
-=======
-/home/hexplex0xff/light-gun/Raspi-c/build/CMakeFiles/rebuild_cache.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/CMakeFiles/install/strip.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/CMakeFiles/install.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/CMakeFiles/install/local.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/CMakeFiles/list_install_components.dir
 /home/hexplex0xff/light-gun/Raspi-c/build/CMakeFiles/edit_cache.dir
-/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/rebuild_cache.dir
-/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/LightGun.dir
-/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/edit_cache.dir
-/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/ScreenCalibrate.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/CMakeFiles/rebuild_cache.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/install/strip.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/install/local.dir
 /home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/CamCalibrate.dir
->>>>>>> f33ea37cf03b4909da94043f73d7efcabdb1c4a0
+/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/install.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/ScreenCalibrate.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/edit_cache.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/LightGun.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/rebuild_cache.dir
+/home/hexplex0xff/light-gun/Raspi-c/build/src/CMakeFiles/list_install_components.dir

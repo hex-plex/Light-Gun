@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/opencv -I/opencv2 -I/opencv4 -isystem /usr/local/include/opencv4 
+CXX_INCLUDES = -I/opencv -I/opencv2 -I/opencv4 -I/home/hexplex0xff/light-gun/Raspi-c/include -isystem /usr/local/include/opencv4 
 

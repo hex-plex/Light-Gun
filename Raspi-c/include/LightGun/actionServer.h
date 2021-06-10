@@ -19,12 +19,7 @@ namespace actionServer{
     void switchDown(void);
     
     void signal_callback_handler(int signum);
-    
-#ifdef __arm__
-    
-    unsigned int prevTrig  = millis();
-    unsigned int prevTogl  = millis();
-    
+
     int setupSwitch(std::vector<void (*)(void)> &cal);
     void switchDown(void);
     void shutdown(void);    
@@ -32,10 +27,18 @@ namespace actionServer{
     void init(void (*f)(void), std::string baddr, Gun& gun);
     void button_set(void (*f)(int* coor));
 
-#endif
 
     bool ok(void);
     
     void fetch(void);
 
+    
+#ifdef __arm__
+    
+    unsigned int prevTrig  = millis();
+    unsigned int prevTogl  = millis();
+    
+#endif
+
+    
 }

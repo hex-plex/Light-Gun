@@ -15,4 +15,15 @@ include_directories(${OpenCV_INCLUDE_HEAD}/opencv)
 include_directories(${OpenCV_INCLUDE_HEAD}/opencv2)
 include_directories(${OpenCV_INCLUDE_HEAD}/opencv4)
 
+include_directories(
+  include
+)
+
+# include_directories()
+
+# add_executable(LightGun src/main.cpp)
+# target_link_libraries(LightGun ${OpenCV_LIBS})
+
+# install(TARGETS LightGun DESTINATION bin)
+
 add_subdirectory(src)

@@ -18,7 +18,8 @@ int dst(cv::Point2f &a,cv::Point2f &b){
     return std::sqrt((c.x*c.x) + (c.y*c.y));
 }
 bool operator<(const cntHier &a, const cntHier &b){
-    bool flag=false;c,bmc=b.mc;
+    bool flag=false;
+    cv::Point2f amc = a.mc,bmc=b.mc;
     if (dst(amc,bmc)<0.07*DiagL){
         if(a.hier[3]>b.hier[3]){return false;}
         else if(a.hier[3]<b.hier[3]){return true;}

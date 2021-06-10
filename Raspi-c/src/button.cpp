@@ -1,8 +1,11 @@
 #include<iostream>
+
+using namespace std;
+
 #ifdef __arm__
 #include<wiringPi.h>
 
-using namespace std;
+
 int ctr = 0;
 int flag=0;
 unsigned int prevTime = millis();
@@ -28,7 +31,10 @@ void switchdown(void){
 }
 #else
 int main(){
-    std::cout<<"No GPIOs detected\n";
+    cout<<"No GPIOs detected\n";
     return 0;
+}
+void switchdown(void){
+    cout<<"No GPIOs detected\n";
 }
 #endif

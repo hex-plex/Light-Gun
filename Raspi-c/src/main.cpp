@@ -10,8 +10,8 @@
 #include <chrono>
 #include <bluetooth/bluetooth.h>
 #include <bluetooth/rfcomm.h>
-#include "actionServer.cpp"
-#include "btServer.cpp"
+#include <LightGun/actionServer.h>
+#include <LightGun/btServer.h>
 
 void pair_socket(void);
 void compute(int* mouse_coor);
