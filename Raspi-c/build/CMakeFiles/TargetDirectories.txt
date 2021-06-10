@@ -1,0 +1,5 @@
+/home/pi/Light-Gun/Raspi-c/build/CMakeFiles/rebuild_cache.dir
+/home/pi/Light-Gun/Raspi-c/build/CMakeFiles/LightGun.dir
+/home/pi/Light-Gun/Raspi-c/build/CMakeFiles/edit_cache.dir
+/home/pi/Light-Gun/Raspi-c/build/CMakeFiles/ScreenCalibrate.dir
+/home/pi/Light-Gun/Raspi-c/build/CMakeFiles/CamCalibrate.dir

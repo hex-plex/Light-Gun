@@ -17,8 +17,7 @@ int dst(cv::Point2f &a,cv::Point2f &b){
     return std::sqrt((c.x*c.x) + (c.y*c.y));
 }
 bool operator<(const cntHier &a, const cntHier &b){
-    bool flag=false;
-    cv::Point2f amc = a.mc,bmc=b.mc;
+    bool flag=false;c,bmc=b.mc;
     if (dst(amc,bmc)<0.07*DiagL){
         if(a.hier[3]>b.hier[3]){return false;}
         else if(a.hier[3]<b.hier[3]){return true;}
@@ -54,24 +53,48 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     */
     cv::Mat gray;
     cv::cvtColor(img,gray,cv::COLOR_BGR2GRAY);
+    
+    cv::GaussianBlur(gray, gray, cv::Size(5,5), 0);
+
+    cv::threshold( gray, gray, 105, 255, 0 ); // Param 1 threshold value
+    double min, max;
+    cv::minMaxIdx(gray, &min, &max);
+    std::cout<<"Max "<<max<<" Min "<<min<<"\n";
+    
+    
+    cv::Mat element = cv::getStructuringElement(cv::MORPH_ELLIPSE, 
+                                                cv::Size(5, 5),
+                                                cv::Point(2,2)
+                            ); // Param 2 Stride lenght 
+    
+    cv::erode(gray, gray, element);
+    cv::dilate(gray, gray, element);
+
+    cv::imshow("Yo",gray);
+    cv::waitKey(1);
+    
     gray = 255 - gray;
+
+
+
     cv::SimpleBlobDetector::Params params;
-    params.minThreshold = 70;
-    params.maxThreshold = 200;
+    params.minThreshold = 50;
+    params.maxThreshold = 255;
     params.filterByCircularity = true ;
-    params.minCircularity = 0.75;
+    params.minCircularity = 0.8;
     params.filterByArea = true;
-    params.minArea = 2;
-    params.maxArea = 20;
+    params.minArea = 3;
+    params.maxArea = 100;
     params.filterByConvexity = false;
     params.filterByInertia = false;
     cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
     std::vector<cv::KeyPoint> keypoints;
     detector->detect(gray,keypoints);
+    std::cout<<"size of keypoints :"<<keypoints.size()<<"\n";
     std::vector<cv::Point2f> Final;
     cv::Point2f refer = cv::Point2f(0.0f,0.0f);
     cv::Point2f minn=cv::Point2f(RES[0],RES[1]),maxx=refer;
-    if (keypoints.size()<4)return false;
+    //if (keypoints.size()<4)return false;
     for (int i=0;i<keypoints.size();i++){
         if(dst(keypoints.at(i).pt,refer)<dst(minn,refer))minn = keypoints.at(i).pt;
         if(dst(keypoints.at(i).pt,refer)>dst(maxx,refer))maxx = keypoints.at(i).pt;
@@ -82,37 +105,6 @@ bool thresh(cv::Mat &img,std::vector<cv::Point2d> &pnts,bool flag,int* res){
     for(int i=0;i<4;i++){
         Final.push_back(keypoints.at(i).pt);
     }
-    /*
-    std::vector< std::vector<cv::Point> > contours;
-    std::vector<cv::Vec4i> hierachy;
-    cv::findContours(img,contours,hierachy,cv::RETR_TREE,cv::CHAIN_APPROX_SIMPLE);//,cv::CHAIN_APPROX_NONE);
-    std::vector< cntHier > arr;
-    cv::Point2f refer = cv::Point2f(0.0f,0.0f);
-    cv::Point2f minn=cv::Point2f(RES[0],RES[1]),maxx=refer;
-    for(int i=0;i<contours.size();i++){
-        if(cv::contourArea(contours.at(i))>0.001*RES[0]*RES[1]){
-            arr.push_back(cntHier(contours.at(i),hierachy.at(i)));
-            if(dst(arr.back().mc,refer)<dst(minn,refer))minn = arr.back().mc;
-            if(dst(arr.back().mc,refer)>dst(maxx,refer))maxx = arr.back().mc;
-        }
-    }
-    cv::Point2f diag = maxx-minn;
-    DiagL = dst(diag,refer);
-
-    std::sort(all(arr));
-    cntHier temp;
-    std::vector<cv::Point2f> CenterOfMass;
-    std::vector<cv::Point2f> Final;
-    cntHier st = arr.at(0);
-    for(int i=0;i<arr.size();i++){
-        if(dst(st.mc,arr.at(i).mc)<0.05*DiagL){
-            CenterOfMass.push_back(arr.at(i).mc);
-        }
-        else{
-            Final.push_back(average(CenterOfMass));
-            CenterOfMass.clear();
-        }
-    }*/
     pnts.clear();
     for(int i = 0; i<4;i++){
         pnts.push_back(cv::Point2d((double)Final.at(i).x,(double)Final.at(i).y));
