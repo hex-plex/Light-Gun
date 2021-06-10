@@ -7,8 +7,45 @@ Configuration here can be split into three part
 - Auto white balance, ISO and temperature control
 - The point mapping of the leds to the display
 
+## Installation
+_Before running any Application <a href="#PreInstallation">checkout</a> the ISO, temp control as to reduce variance as much as possible._
+#### Raspberry Pi
+There are few dependencies that are neccesary for building the project.
+###### Pre Installation
+```bash
+Opencv
+Bluez
+WiringPi
+```
+###### Build Project
+``` bash
+git clone https://github.com/hex-plex/Light-Gun
+cd Light-Gun/Raspi-c
+mkdir -p build && cd build
+cmake ../
+cmake --build .
+./CamCalibrate                    ## To calibrate the camera module and attain its distcoeff and camera matrix
+./ScreenCalibrate                 ## To Calibrate the pose of the leds and map them with edges of display
+echo "e9:eb:d6:a8:0b:af" >> .configDevice  ## Host devices bluetooth Address to connect.
+./LightGun                        ## To run the Application
+```
+#### Local Machine
+``` bash
+git clone https://github.com/hex-plex/Light-Gun
+cd Light-Gun/VMserver-c
+mkdir -p build && cd build
+### If Linux
+sudo apt-get install libx11-dev libx11tst-dev
+### or If windows
+### install autogui library for cmake.
+cmake ../
+cmake --build .
+./VMserver                        ## This will launch the server on the local host
+```
+
+## Camera Calibrations
 ### Distortion and Transformation of the Camera
-Run the cameraCalibrateOnce.cpp to get the Distortion and Transformation matrix of the camera and will store this into a file which can be reused accross all operations. You would need to have Checkerboard to configure this which is a little inconvenient but is a neccesary step. But one could approximate the same if and only if they dont have a lens attached to the camera which skewes ( You can look for the approximation in the Python scripts or visit the link in the main README).
+Run the CamCalibrate application to get the Distortion and Transformation matrix of the camera and will store this into a file which can be reused accross all operations. You would need to have Checkerboard to configure this which is a little inconvenient but is a neccesary step. But one could approximate the same if and only if they dont have a lens attached to the camera which skewes ( You can look for the approximation in the Python scripts or visit the link in the main README).
 ### Auto white Balance, ISO and temperature control
 This step is important to keep the thresholding values consistent over all the runs. You can use OpenCV directly to SET these values of the camera parameter.<br/>
 Ex:- <br/>
@@ -19,7 +56,7 @@ many more parameters can be seen in OpenCV docs<br/>
 But , This rather doesnt work well with all the hardware types and a lot of times fails to fetch the camera api one has.<br/>
 The best solution is to use the Linux Kernel which the Camera uses, mostly it is V4L(VideoForLinux).<br/>
 you can check it out as follows
-
+#### PreInstallation
 ```bash
 sudo apt-get install v4l-utils
 v4l2-ctl --list-devices  ## This would show you all the devices registered under the api
@@ -39,5 +76,17 @@ If you change your hardware frequently then you can add these into ~/.profile or
 echo "v4l2-ctl --set-ctrl=white_balance_auto_preset=0" >> ~/.profile
 ```
 And so on as one wants to implement these.
+
+
+The configuration should start working by now and should start responding to each button clicks.
 ### Point mapping
-Run the PointCalibration.cpp to get the mapping store do note have the camera as parallel to the screen as possible .
+Run the ScreenCalibrate application to get the mapping stored. do note that the camera must be parallel to the screen as much as possible.
+#### Step 1:
+Keep The camera asmuch parallel to the display with LED array. And get the Corner points detected like so.
+![Corner points](raspi-feed/Desktop/2020-10-19-024653_1920x1080_scrot.png?raw=True)
+#### Step 2:
+For the same frame Crop or select The Region of Interest that is select The region which would only contain the Display and not the border to increase accuracy of the pointer. Like so.
+![Region Of Interest](raspi-feed/Desktop/2020-10-19-024724_1920x1080_scrot.png?raw=True)
+#### Step 3:
+These previous steps should generate a ```refpoints.yaml``` file which contains the decription about your setup. This is the same output.
+![Output](raspi-feed/Desktop/2020-10-19-025031_1920x1080_scrot.png)

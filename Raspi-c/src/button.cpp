@@ -1,4 +1,5 @@
 #include<iostream>
+#ifdef __arm__
 #include<wiringPi.h>
 
 using namespace std;
@@ -25,3 +26,9 @@ void switchdown(void){
     	flag=1;prevTime=millis();
 	}
 }
+#else
+int main(){
+    std::cout<<"No GPIOs detected\n";
+    return 0;
+}
+#endif

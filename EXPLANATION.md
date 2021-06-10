@@ -1,3 +1,8 @@
-## EXPLANATION
-I see you are interested to know more but unfortunately i couldn't update it by now :sweat_smile:.<br/>
-But you can have a look at the [Reference](https://github.com/hex-plex/Light-Gun#reference) section of the readme.:star: the repo for further updates :smile:.
+## Documentation
+This is the documentation of the project.
+PDF latex version [link](/abstract.pdf)
+## Abstract
+## 3D Computer Vision
+## Calibrations
+## Results
+## Conclusion and Future Work

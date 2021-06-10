@@ -2,6 +2,7 @@
 #include <iostream>
 #include <math.h>
 #define all(c) (c).begin(),(c).end()
+
 int RES[2]={640,480};
 int DiagL = 800;
 struct CV_EXPORTS cntHier{
